@@ -1,7 +1,7 @@
 <template>
   <div class="flex w-screen h-screen text-gray-700">
     <Icons />
-    <Dropdown :item="item"/>
+    <Dropdown :item="item" />
     <div class="flex flex-col flex-grow h-full">
       <Header />
       <Contents />
@@ -14,9 +14,9 @@ export default {
   data() {
     return {
       item: {
-        subject: 'second_industrial',
-        title: this.$secondIndustrialChapters[this.$route.params.chapterId - 1].title,
-        lessons: this.$secondIndustrialChapters[this.$route.params.chapterId - 1].lessons,
+        subject: 'second_commercial',
+        title: this.$secondCommercialChapters[this.$route.params.chapterId - 1].title,
+        lessons: this.$secondCommercialChapters[this.$route.params.chapterId - 1].lessons,
       }
     }
   },

@@ -1,5 +1,5 @@
 <template>
-  <section class="grid grid-cols-12 my-10 overflow-scroll">
+  <section class="grid grid-cols-12 py-10 overflow-scroll">
     <h1 class="col-span-5 col-start-4 text-3xl py-10 font-bold">{{ chapters.body }}</h1>
     <NuxtLink v-for="chapter in chapters.parents" :key="chapter.id" :to="`/${$route.name}/chapter/${chapter.id}/lesson/1`" class="col-span-5 col-start-4 flex rounded-xl shadow border border-gray-300 mb-4">
       <div class="h-10 w-10 rounded-full bg-blue-500 m-2 flex">
