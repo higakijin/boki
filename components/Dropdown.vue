@@ -14,14 +14,20 @@
         <a class="w-full px-4 py-2 text-left hover:bg-gray-300" href="#">Menu Item 1</a>
       </div>
     </button>
-    <div class="flex flex-col flex-grow p-4 overflow-auto">
-      <a v-for="lesson in lessons" :key="lesson.id" class="flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-gray-300" href="#">
+    <div class="flex flex-col flex-grow p-4 overflow-auto gap-y-3">
+      <NuxtLink v-for="lesson in lessons" :key="lesson.id" class="flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-gray-300" :to="`/second_industrial/chapter/${$route.params.chapterId}/lesson/${lesson.id}`">
         <span class="leading-none">{{ lesson.id }}. {{ lesson.title }}</span>
-      </a>
-      <a class="flex items-center flex-shrink-0 h-10 px-3 mt-auto text-sm font-medium bg-gray-200 rounded hover:bg-gray-300" href="#">
-        <SvgBack />
-        <span class="ml-2 leading-none">スライドに戻る</span>
-      </a>
+      </NuxtLink>
+      <div class="mt-auto">
+        <a class="flex items-center flex-shrink-0 h-10 px-3 mt-4 text-sm font-medium bg-gray-200 rounded hover:bg-gray-300" href="#">
+          <SvgBack />
+          <span class="ml-2 leading-none">スライドに戻る</span>
+        </a>
+        <NuxtLink class="flex items-center flex-shrink-0 h-10 px-3 mt-4 text-sm font-medium bg-gray-200 rounded hover:bg-gray-300" to="/second_industrial">
+          <SvgCancel />
+          <span class="ml-2 leading-none">諦める</span>
+        </NuxtLink>
+      </div>
     </div>
   </div>
 </template>
@@ -30,8 +36,8 @@
 export default {
   data() {
     return {
-      title:  this.$secondIndustrialChapters[this.$route.params.chapterId - 1].title,
-      lessons: this.$secondIndustrialChapters[this.$route.params.chapterId - 1].lessons
+      title: this.$secondIndustrialChapters[this.$route.params.chapterId - 1].title,
+      lessons: this.$secondIndustrialChapters[this.$route.params.chapterId - 1].lessons,
     }
   },
 }
