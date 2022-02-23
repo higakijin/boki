@@ -13,11 +13,10 @@ export default {
   data() {
     return {
       chapters: {
-        parents: this.$secondIndustrialChapters,
-        title: '2工',
-        body: '2級工業簿記',
+        parents: this.$secondCommercialChapters,
+        title: '2商',
+        body: '2級商業簿記'
       }
-      
     }
   }
 }
