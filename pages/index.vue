@@ -1,14 +1,12 @@
 <template>
-  <div>
-    ここはindexページ
-  </div>
+  <div>ここはindexページ</div>
 </template>
 
 <script>
 export default {
   // lpはあとで作るよ
-  middleware({ redirect}) {
+  middleware({ redirect }) {
     redirect('/dashbord')
-  }
+  },
 }
 </script>
