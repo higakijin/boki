@@ -1,7 +1,7 @@
 <template>
   <div class="relative flex w-screen h-screen text-gray-700">
     <Icons />
-    <Dropdown :item="item" />
+    <Dropdown :item="item" @backPresentetion="backPresentetion" />
     <div class="flex flex-col flex-grow h-full">
       <Header />
       <Contents />
@@ -17,7 +17,6 @@
         <div class="absolute left-5 inset-y-1/2 font-extrabold text-white text-5xl text-blue-400 cursor-pointer" @click="nextPage">＜</div>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -42,7 +41,7 @@ export default {
           src: require('@/assets/images/img3.jpg'),
         },
       ],
-      presentetion: true
+      presentetion: true,
     }
   },
   methods: {
@@ -58,6 +57,9 @@ export default {
         return
       }
       this.page--
+    },
+    backPresentetion() {
+      this.presentetion = true
     },
   },
 }

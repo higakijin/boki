@@ -19,10 +19,10 @@
         <span class="leading-none">{{ lesson.id }}. {{ lesson.title }}</span>
       </NuxtLink>
       <div class="mt-auto">
-        <a class="flex items-center flex-shrink-0 h-10 px-3 mt-4 text-sm font-medium bg-gray-200 rounded hover:bg-gray-300" href="#">
+        <div @click="$emit('backPresentetion')"  class="flex items-center flex-shrink-0 h-10 px-3 mt-4 text-sm font-medium bg-gray-200 rounded hover:bg-gray-300 cursor-pointer">
           <SvgBack />
           <span class="ml-2 leading-none">スライドに戻る</span>
-        </a>
+        </div>
         <NuxtLink class="flex items-center flex-shrink-0 h-10 px-3 mt-4 text-sm font-medium bg-gray-200 rounded hover:bg-gray-300" :to="`/${item.subject}`">
           <SvgCancel />
           <span class="ml-2 leading-none">諦める</span>
@@ -41,6 +41,5 @@ export default {
       lessons: this.item.lessons,
     }
   },
-
 }
 </script>
