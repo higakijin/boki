@@ -23,7 +23,7 @@ import ClickOutside from 'vue-click-outside'
 export default {
   data() {
     return {
-      opened: false
+      opened: false,
     }
   },
 
