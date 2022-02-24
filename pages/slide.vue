@@ -1,10 +1,10 @@
 <template>
-  <div class="slide__wrapper">
+  <div class="relative w-5/12 mx-auto">
     <div v-show="index === page" v-for="(image, index) in images" :key="index">
-      <img :src="image.src" class="image" />
+      <img :src="image.src" class="w-full" />
     </div>
-    <div class="right-btn" @click="nextPage">＞</div>
-    <div class="left-btn" @click="nextPage">＜</div>
+    <div class="absolute right-5 font-extrabold top-52 text-white text-5xl text-blue-400 cursor-pointer" @click="nextPage">＞</div>
+    <div class="absolute left-5 font-extrabold top-52 text-white text-5xl text-blue-400 cursor-pointer" @click="nextPage">＜</div>
   </div>
 </template>
 
@@ -44,31 +44,3 @@ export default {
   },
 }
 </script>
-
-<style>
-.slide__wrapper {
-  position: relative;
-  width: 40%;
-  margin: 0 auto;
-}
-.image {
-  width: 100%;
-}
-.right-btn {
-  position: absolute;
-  right: 20px;
-  top: 41%;
-  font-size: 50px;
-  font-weight: bold;
-  color: #fff;
-}
-.left-btn {
-  position: absolute;
-  left: 20px;
-  top: 41%;
-  font-size: 25px;
-  font-size: 50px;
-  font-weight: bold;
-  color: #fff;
-}
-</style>
