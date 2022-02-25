@@ -14,8 +14,8 @@
         </div>
         <div v-show="index === page" v-for="(image, index) in images" :key="index" class="relative">
           <img :src="image.src" class="w-full rounded-md" />
-          <div class="absolute right-5 inset-y-1/2 font-extrabold text-white text-5xl text-blue-400 cursor-pointer" @click="nextPage">＞</div>
-          <div class="absolute left-5 inset-y-1/2 font-extrabold text-white text-5xl text-blue-400 cursor-pointer" @click="nextPage">＜</div>
+          <div v-show="index !== images.length - 1" class="absolute right-5 inset-y-1/2 font-extrabold text-white text-5xl text-blue-400 cursor-pointer" @click="nextPage">＞</div>
+          <div v-show="index !== 0" class="absolute left-5 inset-y-1/2 font-extrabold text-white text-5xl text-blue-400 cursor-pointer" @click="prePage">＜</div>
         </div>
       </div>
     </div>
@@ -61,7 +61,7 @@ export default {
       }
       this.page++
     },
-    prevPage() {
+    prePage() {
       if (this.page <= 0) {
         return
       }
