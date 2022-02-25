@@ -1,7 +1,7 @@
 <template>
   <div class="flex items-center flex-shrink-0 h-16 px-8 border-b border-gray-300">
     <div class="text-lg font-medium">
-      <Breadcrunbs />
+      <Breadcrunbs :pages="pages"/>
     </div>
 
     <div v-click-outside="hide" @click="toggle" class="ml-auto flex items-center justify-center flex-shrink-0 ml-5 w-10 h-10 rounded cursor-pointer">
@@ -21,6 +21,7 @@
 import ClickOutside from 'vue-click-outside'
 
 export default {
+  props: ['pages'],
   data() {
     return {
       opened: false,

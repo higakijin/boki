@@ -3,7 +3,7 @@
     <Icons />
     <Dropdown :item="item" @backPresentetion="backPresentetion" />
     <div class="flex flex-col flex-grow h-full">
-      <Header />
+      <Header :pages="pages" />
       <Contents />
     </div>
     <div v-show="presentetion" class="bg-gray-300 w-screen h-screen absolute opacity-75"></div>
@@ -44,6 +44,13 @@ export default {
         },
       ],
       presentetion: true,
+
+      pages: [
+        { name: 'コース選択', link: '/dashbord' },
+        { name: '2級商業簿記', link: '/second_commercial' },
+        { name: `Chapter.${this.$route.params.chapterId}`, link: `/second_commercial/chapter/${this.$route.params.chapterId}/lesson/${this.$route.params.lessonId}` },
+        { name: `Lesson.${this.$route.params.lessonId}`, link: `/second_commercial/chapter/${this.$route.params.chapterId}/lesson/${this.$route.params.lessonId}` },
+      ],
     }
   },
   methods: {
