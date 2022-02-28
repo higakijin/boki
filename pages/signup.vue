@@ -12,25 +12,25 @@
         <div class="w-full h-100">
           <h1 class="text-xl md:text-2xl font-bold leading-tight mt-12">Create your new account</h1>
 
-          <form class="mt-6" action="#" method="POST">
+          <form @click.prevent="signup" class="mt-6" action="#" method="POST">
             <div>
               <label class="block text-gray-700">Name</label>
-              <input type="text" name="" id="" placeholder="Name" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autofocus autocomplete required />
+              <input type="text" v-model="name" id="" placeholder="Name" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autofocus autocomplete required />
             </div>
 
             <div class="mt-4">
               <label class="block text-gray-700">Email Address</label>
-              <input type="email" name="" id="" placeholder="Email Address" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" required />
+              <input type="email" v-model="email" id="" placeholder="Email Address" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" required />
             </div>
 
             <div class="mt-4">
               <label class="block text-gray-700">Password</label>
-              <input type="password" name="" id="" placeholder="Enter Password" minlength="6" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" required />
+              <input type="password" v-model="password" id="" placeholder="Enter Password" minlength="6" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" required />
             </div>
 
             <div class="mt-4">
               <label class="block text-gray-700">Password Confirmation</label>
-              <input type="password" name="" id="" placeholder="Enter Password Again" minlength="6" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" required />
+              <input type="password" v-model="password_confirmation" id="" placeholder="Enter Password Again" minlength="6" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" required />
             </div>
 
             <button type="submit" class="w-full block bg-indigo-500 hover:bg-indigo-400 focus:bg-indigo-400 text-white font-semibold rounded-lg px-4 py-3 mt-6">Log In</button>
@@ -58,3 +58,34 @@
     </section>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      name: '',
+      email: '',
+      password: '',
+      password_confirmation: '',
+    }
+  },
+  methods: {
+    async signup() {
+      await this.$axios
+        .$post('/auth', {
+          name: this.name,
+          email: this.email,
+          password: this.password,
+          password_confirmation: this.password_confirmation,
+        })
+        .then((res) => {
+          console.log(res)
+          this.$router.push('/dashbord')
+        })
+        .catch((e) => {
+          console.log(e)
+        })
+    },
+  },
+}
+</script>
