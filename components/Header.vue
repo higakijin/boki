@@ -35,8 +35,8 @@ export default {
     hide() {
       this.opened = false
     },
-    logout() {
-      console.log('ログアウトします')
+    async logout() {
+      await this.$auth.logout('/sign_out')
     }
   },
 

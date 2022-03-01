@@ -21,3 +21,13 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  middleware({ redirect, store }) {
+    if (!store.$auth.$state.loggedIn) {
+      redirect('/')
+    }
+  },
+}
+</script>
