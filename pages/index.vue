@@ -2,7 +2,7 @@
   <div>
     <TopNav />
 
-    <section class="relative container mx-auto flex flex-wrap py-8">
+    <section class="relative container mx-auto flex flex-wrap py-8 max-w-7xl mx-auto">
       <div class="flex items-center w-full px-4 py-12 lg:w-1/2 sm:px-6 lg:px-8 sm:py-16 lg:py-24 lg:h-screen lg:items-center">
         <div class="max-w-lg mx-auto text-center lg:text-left lg:pr-12">
           <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl">最強の簿記学習ツール</h2>
@@ -97,7 +97,7 @@
     </section>
 
     <!-- Section 5 -->
-    <section class="text-gray-700 bg-white body-font">
+    <section class="text-gray-700 bg-white body-font max-w-7xl mx-auto">
       <div class="container flex flex-col items-center px-8 py-8 mx-auto max-w-7xl sm:flex-row">
         <a href="#_" class="text-xl font-bold leading-none text-gray-900 select-none logo">僕のボキ</a>
         <p class="mt-4 text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l sm:border-gray-200 sm:mt-0">© 2022 Developed by higakijin</p>
