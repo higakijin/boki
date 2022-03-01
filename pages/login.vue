@@ -49,7 +49,7 @@
 <script>
 export default {
   middleware({ redirect, store }) {
-    if (store.$auth.$state.loggedIn) {
+    if (store.$auth.state.loggedIn) {
       redirect('/dashbord')
     }
   },

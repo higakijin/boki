@@ -12,7 +12,7 @@
         <div class="w-full h-100">
           <h1 class="text-xl md:text-2xl font-bold leading-tight mt-12">Create your new account</h1>
 
-          <form @click.prevent="signup" class="mt-6" action="#" method="POST">
+          <form @submit.prevent="signup" class="mt-6">
             <div>
               <label class="block text-gray-700">Name</label>
               <input type="text" v-model="name" id="" placeholder="Name" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autofocus autocomplete required />
@@ -62,7 +62,7 @@
 <script>
 export default {
   middleware({ redirect, store }) {
-    if (store.$auth.$state.loggedIn) {
+    if (store.$auth.state.loggedIn) {
       redirect('/dashbord')
     }
   },
@@ -84,8 +84,16 @@ export default {
           password_confirmation: this.password_confirmation,
         })
         .then((res) => {
-          console.log(res)
-          this.$router.push('/dashbord')
+          this.$auth
+            .loginWith('local', {
+              data: {
+                email: this.email,
+                password: this.password,
+              },
+            })
+            .then(() => {
+              this.$router.push('/dashbord')
+            })
         })
         .catch((e) => {
           console.log(e)
