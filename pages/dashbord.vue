@@ -23,6 +23,11 @@
 
 <script>
 export default {
+  middleware({ redirect, store}) {
+    if (!store.$auth.$state.loggedIn) {
+      redirect('/')
+    }
+  },
   data() {
     return {
       courses: [
