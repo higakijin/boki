@@ -133,7 +133,7 @@
             </svg>
           </a>
 
-          <a href="#" class="text-gray-400 hover:text-gray-500">
+          <a href="https://github.com/higakijin/boki" class="text-gray-400 hover:text-gray-500">
             <span class="sr-only">GitHub</span>
             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path
