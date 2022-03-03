@@ -19,7 +19,7 @@
     </section>
 
     <!-- Section 3 -->
-    <section class="box-border py-8 leading-7 text-gray-900 bg-white border-0 border-gray-200 border-solid sm:py-12 md:py-16 lg:py-24">
+    <section class="box-border leading-7 text-gray-900 bg-white border-0 border-gray-200 border-solid pt-20">
       <div class="box-border max-w-6xl px-4 pb-12 mx-auto border-solid sm:px-6 md:px-6 lg:px-4">
         <div class="flex flex-col items-center leading-7 text-center text-gray-900">
           <h2 class="box-border m-0 text-3xl font-semibold leading-tight tracking-tight text-black border-solid sm:text-4xl md:text-5xl">プラン一覧</h2>
@@ -66,7 +66,7 @@
     </section>
 
     <!-- Section 4 -->
-    <section class="px-2 py-32 bg-white md:px-0">
+    <section class="px-2 bg-white md:px-0">
       <div class="container items-center max-w-6xl px-8 mx-auto xl:px-5">
         <div class="flex flex-wrap items-center sm:-mx-3">
           <div class="w-full md:w-1/2 md:px-3">
@@ -88,9 +88,7 @@
             </div>
           </div>
           <div class="w-full md:w-1/2">
-            <div class="w-full h-auto overflow-hidden rounded-md shadow-xl sm:rounded-xl">
-              <img src="https://cdn.devdojo.com/images/november2020/hero-image.jpeg" />
-            </div>
+            <SvgTopExam />
           </div>
         </div>
       </div>
