@@ -66,7 +66,7 @@ export default {
         endpoints: {
           login: { url: '/auth/sign_in', method: 'post', propertyName: 'access-token' },
           logout: { url: '/auth/sign_out', method: 'delete' },
-          user: { url: '/currentUser', method: 'get', propertyName: 'data' }
+          user: { url: '/currentUser', method: 'get', propertyName: 'user' }
         }
       }
     }
