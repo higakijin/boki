@@ -1,6 +1,6 @@
 <template>
   <svg class="w-96 h-32" xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" width="842" height="678.37637" viewBox="0 0 842 678.37637" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>business_shop</title>
+    <title>2級商業簿記</title>
     <ellipse cx="426" cy="645.87637" rx="416" ry="32.5" fill="#3f3d56" />
     <polygon points="779.369 585.5 783.268 614.093 755.975 616.692 759.874 581.601 779.369 585.5" fill="#a0616a" />
     <path d="M829.70151,303.81246s2.59933,35.091,2.59933,36.39069S814.1055,431.1799,814.1055,431.1799s-25.99336,49.38737,0,48.0877,18.19534-46.788,18.19534-46.788l27.293-75.38072-11.697-53.28638Z" transform="translate(-179 -110.81181)" fill="#a0616a" />
