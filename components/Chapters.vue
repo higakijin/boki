@@ -1,18 +1,26 @@
 <template>
-  <section class="grid grid-cols-12 overflow-scroll">
-    <h1 class="col-span-5 col-start-4 text-3xl py-10 font-bold">{{ chapters.body }}</h1>
-    <NuxtLink v-for="chapter in chapters.parents" :key="chapter.id" :to="`/${$route.name}/chapter/${chapter.id}/lesson/1`" class="col-span-5 col-start-4 flex rounded-xl shadow border border-gray-300 mb-4">
-      <div v-if="false" class="h-10 w-10 rounded-full bg-blue-500 m-2 flex">
-        <p class="text-white mx-auto my-auto text-lg font-bold">{{ chapters.title }}</p>
+  <section class="max-w-7xl mx-auto mb-20">
+    <h1 class="text-3xl py-10 font-bold">{{ chapters.body }}</h1>
+    <div class="flex gap-x-5">
+      <div class="w-3/5 p-3">
+        <component :is="chapters.svg" class="h-1/3 max-w-full p-10 mx-auto h-auto"></component>
+        <p class="text-md text-center" style="white-space: pre-wrap;">{{ chapters.introduction }}</p>
       </div>
-      <div v-else class="h-10 w-10 rounded-full bg-yellow-400 m-2 flex">
-        <SvgCheck />
+      <div class="w-2/5">
+        <NuxtLink v-for="chapter in chapters.parents" :key="chapter.id" :to="`/${$route.name}/chapter/${chapter.id}/lesson/1`" class="flex rounded-xl shadow border border-gray-300 mb-4">
+          <div v-if="false" class="h-8 w-8 rounded-full bg-blue-500 m-2 flex">
+            <p class="text-white mx-auto my-auto text-xl font-bold">{{ chapters.title }}</p>
+          </div>
+          <div v-else class="h-8 w-8 rounded-full bg-yellow-400 m-2 flex">
+            <SvgCheck />
+          </div>
+          <p class="text-xl my-auto px-4">Chapter.{{ chapter.id }}　{{ chapter.title }}</p>
+          <div class="ml-auto my-auto mr-3">
+            <SvgLock />
+          </div>
+        </NuxtLink>
       </div>
-      <p class="text-xl my-auto px-4">Chapter.{{ chapter.id }}　{{ chapter.title }}</p>
-      <div class="ml-auto my-auto mr-3">
-        <SvgLock />
-      </div>
-    </NuxtLink>
+    </div>
   </section>
 </template>
 
