@@ -1,6 +1,6 @@
 <template>
   <div>
-    <TopNav />
+    <Nav />
 
     <section class="relative container mx-auto flex flex-wrap py-8 max-w-7xl mx-auto">
       <div class="flex items-center w-full px-4 py-12 lg:w-1/2 sm:px-6 lg:px-8 sm:py-16 lg:py-24 lg:h-screen lg:items-center">
@@ -131,7 +131,7 @@
             </svg>
           </a>
 
-          <a href="https://github.com/higakijin/boki" class="text-gray-400 hover:text-gray-500">
+          <a href="https://github.com/higakijin/boki" class="text-gray-400 hover:text-gray-500" target="_blank">
             <span class="sr-only">GitHub</span>
             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path

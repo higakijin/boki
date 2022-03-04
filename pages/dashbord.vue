@@ -1,8 +1,7 @@
 <template>
-  <div class="flex w-screen h-screen text-gray-700">
-    <Icons />
-    <div class="flex flex-col flex-grow h-full">
-      <Header :pages="pages"/>
+  <div class="w-screen h-screen text-gray-700">
+    <Nav />
+    <div class="flex flex-col flex-grow">
       <section class="py-20 bg-white">
         <div class="container max-w-6xl mx-auto">
           <h2 class="text-4xl font-bold tracking-tight text-center">コースを選択して簿記の学習を開始。</h2>
@@ -33,9 +32,6 @@ export default {
         { title: '2工', body: '2級工業', text: '大きな得点源。完璧にしよう', link: '/second_industrial', svg: 'SvgLevelFactory' },
         { title: '2商', body: '2級商業', text: '実務に役立つ重要ポイント', link: '/second_commercial', svg: 'SvgLevelBussiness' },
       ],
-      pages: [
-        { name: 'コース選択', link: '/dashbord' },
-      ]
     }
   },
 }

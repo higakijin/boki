@@ -1,6 +1,6 @@
 <template>
   <div>
-    <TopNav />
+    <Nav />
 
     <div class="bg-gray-100">
 
