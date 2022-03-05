@@ -24,6 +24,7 @@
       </div>
       <div class="w-1/2 bg-white h-auto">
         <Editor />
+        <button @click="postOutput" class="bg-indigo-500 hover:bg-indigo-600 rounded-md px-3 py-2 mt-5 text-white float-right">投稿</button>
       </div>
     </div>
   </div>
@@ -35,6 +36,12 @@ export default {
   data() {
     return {
       lesson: this.item.lessons[this.$route.params.lessonId - 1]
+    }
+  },
+
+  methods: {
+    postOutput() {
+      console.log('投稿します')
     }
   }
 }
