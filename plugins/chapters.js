@@ -40,7 +40,7 @@ const secondIndustrialChapters = [
   },
   {
     id: 5,
-    title: '製造間接費とは',
+    title: '製造間接費',
     lessons: [
       { id: 1, title: '製造間接費とは' },
       { id: 2, title: '予定配賦率とは' },
