@@ -260,12 +260,12 @@ const secondCommercialChapters = [
     title: '引当金',
     lessons: [
       { id: 1, title: '引当金の種類' },
-      { id: 1, title: '貸倒引当金の一括評価と個別評価' },
-      { id: 1, title: '貸倒引当金の表示' },
-      { id: 1, title: '商品保証引当金・製品保証引当金' },
-      { id: 1, title: '固定資産の修繕引当金' },
-      { id: 1, title: '賞与引当金' },
-      { id: 1, title: '退職給付引当金' },
+      { id: 2, title: '貸倒引当金の一括評価と個別評価' },
+      { id: 3, title: '貸倒引当金の表示' },
+      { id: 4, title: '商品保証引当金・製品保証引当金' },
+      { id: 5, title: '固定資産の修繕引当金' },
+      { id: 6, title: '賞与引当金' },
+      { id: 7, title: '退職給付引当金' },
     ],
   },
   {
@@ -273,10 +273,10 @@ const secondCommercialChapters = [
     title: '純資産',
     lessons: [
       { id: 1, title: '純資産とは' },
-      { id: 1, title: '株式会社の設立' },
-      { id: 1, title: '増資' },
-      { id: 1, title: '剰余金の配分と処分' },
-      { id: 1, title: '株式資本の計数の変動' },
+      { id: 2, title: '株式会社の設立' },
+      { id: 3, title: '増資' },
+      { id: 4, title: '剰余金の配分と処分' },
+      { id: 5, title: '株式資本の計数の変動' },
     ],
   },
   {
