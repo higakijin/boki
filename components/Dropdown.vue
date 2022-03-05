@@ -19,9 +19,9 @@
         <span class="leading-none">{{ lesson.id }}. {{ lesson.title }}</span>
       </NuxtLink>
       <div class="mt-auto">
-        <NuxtLink class="flex items-center flex-shrink-0 h-10 px-3 mt-4 text-sm font-medium bg-gray-200 rounded hover:bg-gray-300" :to="`/${item.subject}`">
+        <NuxtLink class="flex items-center flex-shrink-0 h-10 px-3 mt-4 text-sm font-medium bg-gray-200 rounded hover:bg-yellow-300 bg-yellow-200" :to="`/${item.subject}`">
           <SvgCancel />
-          <span class="ml-2 leading-none">諦める</span>
+          <span class="ml-2 leading-none">やめる</span>
         </NuxtLink>
       </div>
     </div>

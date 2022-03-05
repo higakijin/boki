@@ -8,12 +8,7 @@ export default {
     htmlAttrs: {
       lang: 'en',
     },
-    meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' },
-    ],
+    meta: [{ charset: 'utf-8' }, { name: 'viewport', content: 'width=device-width, initial-scale=1' }, { hid: 'description', name: 'description', content: '' }, { name: 'format-detection', content: 'telephone=no' }],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
 
@@ -23,7 +18,8 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     '~/plugins/axios',
-    '~/plugins/chapters'
+    '~/plugins/chapters',
+    '~plugins/quill.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -39,13 +35,14 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    '@nuxtjs/auth'
+    '@nuxtjs/auth',
+    'vue2-editor/nuxt',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: process.env.NODE_ENV === "production" ? "https://bokunoboki-backend.herokuapp.com" : "http://localhost:5050",
+    baseURL: process.env.NODE_ENV === 'production' ? 'https://bokunoboki-backend.herokuapp.com' : 'http://localhost:5050',
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
@@ -66,10 +63,9 @@ export default {
         endpoints: {
           login: { url: '/auth/sign_in', method: 'post', propertyName: 'access-token' },
           logout: { url: '/auth/sign_out', method: 'delete' },
-          user: { url: '/currentUser', method: 'get', propertyName: 'user' }
-        }
-      }
-    }
-  }
-
+          user: { url: '/currentUser', method: 'get', propertyName: 'user' },
+        },
+      },
+    },
+  },
 }

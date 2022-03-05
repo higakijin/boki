@@ -3,10 +3,10 @@ const secondIndustrialChapters = [
     id: 1,
     title: '工業簿記とは',
     lessons: [
-      { id: 1, title: '工業簿記とは' },
-      { id: 2, title: '工業簿記の全体の流れ' },
-      { id: 3, title: '原価計算とは' },
-      { id: 4, title: '仕掛品と製品' },
+      { id: 1, title: '工業簿記とは', page: 12 },
+      { id: 2, title: '工業簿記の全体の流れ', page: 14 },
+      { id: 3, title: '原価計算とは', page: 16 },
+      { id: 4, title: '仕掛品と製品', page: 18 },
     ],
   },
   {
