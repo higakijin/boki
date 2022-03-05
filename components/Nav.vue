@@ -19,7 +19,7 @@
         <div v-else class="w-8 h-8">
           <SvgNoimage />
         </div>
-        <div v-show="opened" class="absolute right-0 top-8 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <div v-show="opened" class="z-10 absolute right-0 top-8 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
           <NuxtLink to="/profile" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">プロフィール</NuxtLink>
           <div @click="logout" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer">ログアウト</div>
         </div>
