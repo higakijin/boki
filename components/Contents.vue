@@ -24,7 +24,7 @@
       </div>
       <div class="w-1/2 bg-white h-auto">
         <Editor @value="value = $event" />
-        <button @click="postOutput" class="bg-indigo-500 hover:bg-indigo-600 rounded-md px-3 py-2 mt-5 text-white float-right">投稿</button>
+        <button @click="postOutput" class="bg-indigo-500 hover:bg-indigo-600 rounded-md px-3 py-2 mt-5 text-white float-right">保存</button>
       </div>
     </div>
   </div>
@@ -41,10 +41,14 @@ export default {
   },
 
   methods: {
-    postOutput() {
-      console.log('投稿します')
-      console.log(this.value)
-    },
+    async postOutput() {
+      await this.$axios.$post('/outputs', {
+        output: {
+          lesson: this.lesson.title,
+          post: this.value,
+        }
+      })
+    }
   },
 }
 </script>
