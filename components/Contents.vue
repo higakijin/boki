@@ -12,10 +12,10 @@
         </div>
         <div class="mt-8">
           <h2 class="text-xl font-bold not-italic">復習ポイント</h2>
-          <ul class="list-inside list-disc">
-            <li class="m-1">工業簿記・商業簿記の各役割を整理しましょう。</li>
-            <li class="m-1">商品と製品の違いを説明してみましょう。</li>
+          <ul v-if="lesson.hints" class="list-inside list-disc">
+            <li v-for="hint in lesson.hints" :key="hint.id" class="m-1">{{ hint }}</li>
           </ul>
+          <p v-else class="text-gray-400">ヒントはありません</p>
         </div>
         <div class="mt-8">
           <h2 class="text-xl font-bold not-italic">投稿したユーザー</h2>
