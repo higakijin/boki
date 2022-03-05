@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col w-56 border border-gray-300">
+  <div class="flex flex-col border border-gray-300">
     <button class="relative text-sm focus:outline-none group">
       <div class="flex items-center justify-between w-full h-16 px-4 border-b border-gray-300 hover:bg-gray-300">
         <div>

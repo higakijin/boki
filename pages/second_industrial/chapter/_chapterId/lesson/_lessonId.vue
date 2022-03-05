@@ -1,9 +1,9 @@
 <template>
   <div class="w-screen h-screen text-gray-700">
     <Nav />
-    <div class="max-w-7xl mx-auto flex">
-      <Dropdown :item="item" />
-      <Contents />
+    <div class="max-w-7xl mx-auto flex gap-x-5">
+      <Dropdown :item="item" class="w-1/5"/>
+      <Contents class="w-4/5"/>
     </div>
   </div>
 </template>
