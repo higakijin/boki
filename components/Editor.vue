@@ -10,6 +10,11 @@ export default {
       content: '',
     }
   },
+  watch: {
+    content() {
+      this.$emit('value', this.content)
+    }
+  },
   methods: {
     handleImageAdded(file, Editor, cursorLocation, resetUploader) {
       const formData = new FormData()

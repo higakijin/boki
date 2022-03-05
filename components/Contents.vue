@@ -23,7 +23,7 @@
         </div>
       </div>
       <div class="w-1/2 bg-white h-auto">
-        <Editor />
+        <Editor @value="value = $event" />
         <button @click="postOutput" class="bg-indigo-500 hover:bg-indigo-600 rounded-md px-3 py-2 mt-5 text-white float-right">投稿</button>
       </div>
     </div>
@@ -35,14 +35,16 @@ export default {
   props: ['item'],
   data() {
     return {
-      lesson: this.item.lessons[this.$route.params.lessonId - 1]
+      lesson: this.item.lessons[this.$route.params.lessonId - 1],
+      value: ''
     }
   },
 
   methods: {
     postOutput() {
       console.log('投稿します')
-    }
-  }
+      console.log(this.value)
+    },
+  },
 }
 </script>
