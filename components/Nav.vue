@@ -6,7 +6,7 @@
           <span class="mx-auto text-xl font-bold text-gray-900 select-none">僕のボキ</span>
         </NuxtLink>
         <nav class="flex flex-wrap items-center mb-5 text-base md:mb-0 md:pl-8 md:ml-8 md:border-l md:border-gray-200">
-          <NuxtLink class="mr-5 font-medium leading-6 text-gray-600 hover:text-gray-900" to="/contact">About</NuxtLink>
+          <NuxtLink class="mr-5 font-medium leading-6 text-gray-600 hover:text-gray-900" to="/about">About</NuxtLink>
 
           <!-- <a href="#_" class="mr-5 font-medium leading-6 text-gray-600 hover:text-gray-900">Features</a>
           <a href="#_" class="mr-5 font-medium leading-6 text-gray-600 hover:text-gray-900">Pricing</a>

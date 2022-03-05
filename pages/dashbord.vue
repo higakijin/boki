@@ -6,7 +6,7 @@
         <div class="container max-w-6xl mx-auto">
           <h2 class="text-4xl font-bold tracking-tight text-center">コースを選択して簿記の学習を開始。</h2>
           <div class="grid grid-cols-4 gap-8 mt-10 sm:grid-cols-8 lg:grid-cols-12 sm:px-8 xl:px-0">
-            <NuxtLink v-for="course in courses" :key="course.id" :to="course.link" class="flex flex-col items-center justify-between col-span-4 px-8 py-12 space-y-4 overflow-hidden bg-gray-100 sm:rounded-xl">
+            <NuxtLink v-for="course in courses" :key="course.id" :to="course.link" class="flex flex-col items-center justify-between col-span-4 px-8 py-12 space-y-4 overflow-hidden border-2 border-indigo-200 hover:bg-gray-100 sm:rounded-xl">
               <component :is="course.svg" class="w-96 h-32"></component>
               <h4 class="text-xl font-medium text-gray-700">{{ course.body }}</h4>
               <p class="text-base text-center text-gray-500">{{ course.text }}</p>
@@ -20,7 +20,7 @@
 
 <script>
 export default {
-  middleware({ redirect, store}) {
+  middleware({ redirect, store }) {
     if (!store.$auth.$state.loggedIn) {
       redirect('/')
     }

@@ -7,7 +7,7 @@
         <p class="text-md text-center" style="white-space: pre-wrap;">{{ chapters.introduction }}</p>
       </div>
       <div class="w-2/5">
-        <NuxtLink v-for="chapter in chapters.parents" :key="chapter.id" :to="`/${$route.name}/chapter/${chapter.id}/lesson/1`" class="flex rounded-xl shadow border border-gray-300 mb-4">
+        <NuxtLink v-for="chapter in chapters.parents" :key="chapter.id" :to="`/${$route.name}/chapter/${chapter.id}/lesson/1`" class="flex rounded-xl shadow border border-gray-300 mb-4 hover:bg-gray-100">
           <div v-if="false" class="h-8 w-8 rounded-full bg-blue-500 m-2 flex">
             <p class="text-white mx-auto my-auto text-xl font-bold">{{ chapters.title }}</p>
           </div>
