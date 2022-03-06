@@ -19,7 +19,8 @@ export default {
   plugins: [
     '~/plugins/axios',
     '~/plugins/chapters',
-    '~plugins/quill.js'
+    '~plugins/quill',
+    '~plugins/functions'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

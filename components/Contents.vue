@@ -19,7 +19,12 @@
         </div>
         <div class="mt-8">
           <h2 class="text-xl font-bold not-italic">投稿したユーザー</h2>
-          <p class="text-gray-400">投稿したユーザーはいません</p>
+          <ul v-if="outputs[0]">
+            <li v-for="output in outputs" :key="output.id" class="text-md text-green-600 hover:underline">
+              <NuxtLink :to="`/outputs/${output.id}`">{{ output.user.name }}さんのアウトプット（{{ $format(output.updated_at) }}）</NuxtLink>
+            </li>
+          </ul>
+          <p v-else class="text-gray-400">投稿したユーザーはいません</p>
         </div>
       </div>
       <div class="w-1/2 bg-white h-auto">
@@ -36,6 +41,7 @@ export default {
   data() {
     return {
       lesson: this.item.lessons[this.$route.params.lessonId - 1],
+      outputs: this.item.outputs,
       value: ''
     }
   },
@@ -46,9 +52,13 @@ export default {
         output: {
           lesson: this.lesson.title,
           post: this.value,
-        }
+        },
       })
-    }
+      await this.$axios.$get(`/outputs?output[lesson]=${this.lesson.title}`)
+      .then(res => {
+        this.outputs = res.outputs
+      })
+    },
   },
 }
 </script>

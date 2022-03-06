@@ -15,13 +15,19 @@ export default {
       redirect('/')
     }
   },
-  data() {
-    return {
-      item: {
-        subject: 'second_industrial',
-        title: this.$secondIndustrialChapters[this.$route.params.chapterId - 1].title,
-        lessons: this.$secondIndustrialChapters[this.$route.params.chapterId - 1].lessons,
-      },
+  async asyncData({ $axios, $secondIndustrialChapters, params }) {
+    const chapter = $secondIndustrialChapters[params.chapterId - 1]
+    const lesson_name = chapter.lessons[params.lessonId - 1].title
+    const res = await $axios.$get(`/outputs?output[lesson]=${lesson_name}`)
+    if (res) {
+      return {
+        item: {
+          subject: 'second_industrial',
+          title: chapter.title,
+          lessons: chapter.lessons,
+          outputs: res.outputs,
+        }
+      }
     }
   },
 }
