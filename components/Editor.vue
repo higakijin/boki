@@ -5,6 +5,7 @@
 </template>
 <script>
 export default {
+  props: ['myOutput'],
   data() {
     return {
       content: '',
@@ -37,5 +38,10 @@ export default {
         })
     },
   },
+  created() {
+    if (this.myOutput) {
+      this.content = this.myOutput.post
+    }
+  }
 }
 </script>

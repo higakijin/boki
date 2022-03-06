@@ -34,7 +34,7 @@
         </div>
       </div>
       <div class="w-1/2 bg-white h-auto">
-        <Editor @value="value = $event" />
+        <Editor :myOutput="myOutput"  @value="value = $event" />
         <button @click="postOutput" class="bg-indigo-500 hover:bg-indigo-600 rounded-md px-3 py-2 mt-5 text-white float-right">保存</button>
       </div>
     </div>
@@ -49,19 +49,30 @@ export default {
       lesson: this.item.lessons[this.$route.params.lessonId - 1],
       outputs: this.item.outputs,
       value: '',
+      myOutput: this.item.outputs.filter(e => e.user.name === this.$auth.user.name)[0]
     }
   },
 
   methods: {
     async postOutput() {
-      await this.$axios.$post('/outputs', {
-        output: {
-          lesson: this.lesson.title,
-          post: this.value,
-        },
-      })
+      if (!this.myOutput) {
+        await this.$axios.$post('/outputs', {
+          output: {
+            lesson: this.lesson.title,
+            post: this.value,
+          },
+        })
+      } else {
+        await this.$axios.$put(`/outputs/${this.myOutput.id}`, {
+          output: {
+            lesson: this.lesson.title,
+            post: this.value,
+          },
+        })
+      }
       await this.$axios.$get(`/outputs?output[lesson]=${this.lesson.title}`).then((res) => {
         this.outputs = res.outputs
+        this.myOutput = this.outputs.filter(e => e.user.name === this.$auth.user.name)[0]
       })
     },
   },
