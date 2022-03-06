@@ -15,8 +15,14 @@
       </div>
     </button>
     <div class="flex flex-col flex-grow p-4 overflow-auto gap-y-3">
-      <NuxtLink v-for="lesson in lessons" :key="lesson.id" class="flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-gray-300" :to="`/${item.subject}/chapter/${$route.params.chapterId}/lesson/${lesson.id}`">
-        <span class="leading-none">{{ lesson.id }}. {{ lesson.title }}</span>
+      <NuxtLink
+        v-for="lesson in lessons"
+        :key="lesson.id"
+        class="flex items-center flex-shrink-0 text-sm font-medium rounded hover:bg-gray-300"
+        :class="{ 'bg-indigo-500 hover:bg-indigo-500 text-white': lesson.id === parseInt($route.params.lessonId) }"
+        :to="`/${item.subject}/chapter/${$route.params.chapterId}/lesson/${lesson.id}`"
+      >
+        <span class="leading-none p-2">{{ lesson.id }}. {{ lesson.title }}</span>
       </NuxtLink>
       <div class="mt-auto">
         <NuxtLink class="flex items-center flex-shrink-0 h-10 px-3 mt-4 text-sm font-medium bg-gray-200 rounded hover:bg-yellow-300 bg-yellow-200" :to="`/${item.subject}`">
@@ -35,6 +41,7 @@ export default {
     return {
       title: this.item.title,
       lessons: this.item.lessons,
+      isBgcolor: false,
     }
   },
 }
