@@ -20,8 +20,14 @@
         <div class="mt-8">
           <h2 class="text-xl font-bold not-italic">投稿したユーザー</h2>
           <ul v-if="outputs[0]">
-            <li v-for="output in outputs" :key="output.id" class="text-md text-green-600 hover:underline">
-              <NuxtLink :to="`/outputs/${output.id}`">{{ output.user.name }}さんのアウトプット（{{ $format(output.updated_at) }}）</NuxtLink>
+            <li v-for="output in outputs" :key="output.id" class="mt-1 ml-1">
+              <NuxtLink :to="`/outputs/${output.id}`" class="flex gap-x-2">
+                <img v-if="output.user.avatar_url" :src="output.user.avatar_url" class="h-8 w-8 rounded-full" />
+                <div v-else class="h-8 w-8">
+                  <SvgNoimage />
+                </div>
+                <p class="my-auto text-green-600 text-md hover:underline">{{ output.user.name }}さんのアウトプット（{{ $format(output.updated_at) }}）</p>
+              </NuxtLink>
             </li>
           </ul>
           <p v-else class="text-gray-400">投稿したユーザーはいません</p>
@@ -42,7 +48,7 @@ export default {
     return {
       lesson: this.item.lessons[this.$route.params.lessonId - 1],
       outputs: this.item.outputs,
-      value: ''
+      value: '',
     }
   },
 
@@ -54,8 +60,7 @@ export default {
           post: this.value,
         },
       })
-      await this.$axios.$get(`/outputs?output[lesson]=${this.lesson.title}`)
-      .then(res => {
+      await this.$axios.$get(`/outputs?output[lesson]=${this.lesson.title}`).then((res) => {
         this.outputs = res.outputs
       })
     },
