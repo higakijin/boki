@@ -19,22 +19,27 @@
         </div>
         <div class="mt-8">
           <h2 class="text-xl font-bold not-italic">投稿したユーザー</h2>
-          <ul v-if="outputs[0]">
-            <li v-for="output in outputs" :key="output.id" class="mt-1 ml-1">
-              <NuxtLink :to="`/outputs/${output.id}`" class="flex gap-x-2">
+          <div v-if="outputs[0]">
+            <div v-for="output in outputs" :key="output.id" class="mt-1 ml-1">
+              <div @click="showOtherOutput(output)" class="flex gap-x-2 cursor-pointer">
                 <img v-if="output.user.avatar_url" :src="output.user.avatar_url" class="h-8 w-8 rounded-full" />
                 <div v-else class="h-8 w-8">
                   <SvgNoimage />
                 </div>
                 <p class="my-auto text-green-600 text-md hover:underline">{{ output.user.name }}さんのアウトプット（{{ $format(output.updated_at) }}）</p>
-              </NuxtLink>
-            </li>
-          </ul>
+              </div>
+            </div>
+          </div>
           <p v-else class="text-gray-400">投稿したユーザーはいません</p>
         </div>
       </div>
-      <div class="w-1/2 bg-white h-auto">
-        <Editor :myOutput="myOutput"  @value="value = $event" />
+      <div v-if="otherOutput" class="w-1/2 bg-white h-auto border border-gray-300 py-4 px-6">
+        <div class="mt-6">
+          <div v-html="otherOutput"></div>
+        </div>
+      </div>
+      <div v-else class="w-1/2 bg-white h-auto">
+        <Editor :myOutput="myOutput" @value="value = $event" />
         <button @click="postOutput" class="bg-indigo-500 hover:bg-indigo-600 rounded-md px-3 py-2 mt-5 text-white float-right">保存</button>
       </div>
     </div>
@@ -49,7 +54,8 @@ export default {
       lesson: this.item.lessons[this.$route.params.lessonId - 1],
       outputs: this.item.outputs,
       value: '',
-      myOutput: this.item.outputs.filter(e => e.user.name === this.$auth.user.name)[0]
+      myOutput: this.item.outputs.filter((e) => e.user.name === this.$auth.user.name)[0],
+      otherOutput: null,
     }
   },
 
@@ -72,8 +78,17 @@ export default {
       }
       await this.$axios.$get(`/outputs?output[lesson]=${this.lesson.title}`).then((res) => {
         this.outputs = res.outputs
-        this.myOutput = this.outputs.filter(e => e.user.name === this.$auth.user.name)[0]
+        this.myOutput = this.outputs.filter((e) => e.user.name === this.$auth.user.name)[0]
       })
+    },
+    async showOtherOutput(output) {
+      if (output.user.name === this.$auth.user.name ){
+        this.otherOutput = null
+      } else {
+        await this.$axios.$get(`/outputs/${output.id}`).then((res) => {
+          this.otherOutput = res.output.post
+        })
+      }
     },
   },
 }
