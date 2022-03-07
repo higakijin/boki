@@ -1,9 +1,9 @@
 <template>
   <section class="w-full px-8 text-gray-700 bg-white">
-    <div class="container flex flex-row flex-wrap  md:items-center justify-between py-5 mx-auto max-w-7xl">
+    <div class="container flex flex-row flex-wrap md:items-center justify-between py-5 mx-auto max-w-7xl">
       <div class="flex flex-col gap-5 md:flex-row">
         <NuxtLink to="/">
-          <span class="mx-auto text-xl font-bold text-gray-900 select-none ">僕のボキ</span>
+          <span class="mx-auto text-xl font-bold text-gray-900 select-none">僕のボキ</span>
         </NuxtLink>
         <nav class="flex flex-wrap items-center mb-5 text-base md:mb-0 md:pl-8 md:ml-8 md:border-l md:border-gray-200">
           <NuxtLink class="mr-5 font-medium leading-6 text-gray-600 hover:text-gray-900" to="/about">About</NuxtLink>
@@ -14,7 +14,7 @@
         </nav>
       </div>
 
-      <div v-if="$auth.loggedIn" v-click-outside="hide" @click="toggle" class="relative ml-auto flex  justify-center flex-shrink-0 rounded cursor-pointer">
+      <div v-if="$auth.loggedIn" v-click-outside="hide" @click="toggle" class="relative ml-auto flex justify-center h-10 flex-shrink-0 rounded cursor-pointer">
         <img v-if="$auth.user.avatar_url" class="w-10 h-10 rounded-full" :src="$auth.user.avatar_url" />
         <div v-else class="w-8 h-8">
           <SvgNoimage />
