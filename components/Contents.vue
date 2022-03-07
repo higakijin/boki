@@ -26,19 +26,31 @@
                 <div v-else class="h-8 w-8">
                   <SvgNoimage />
                 </div>
-                <p class="my-auto text-green-600 text-md hover:underline">{{ output.user.name }}さんのアウトプット（{{ $format(output.updated_at) }}）</p>
+                <p class="my-auto text-green-600 text-md hover:underline">
+                  {{ output.user.name }}さんのアウトプット
+                  <i class="text-sm not-italic">({{ $format(output.updated_at) }}) </i>
+                  <i v-show="isEdited(output)" class="text-gray-500 not-italic text-xs">(編集済み)</i>
+                </p>
               </div>
             </div>
           </div>
           <p v-else class="text-gray-400">投稿したユーザーはいません</p>
         </div>
       </div>
-      <div v-if="otherOutput" class="w-1/2 bg-white h-auto border border-gray-300 py-4 px-6">
-        <div class="mt-6">
-          <div v-html="otherOutput"></div>
+      <div v-if="otherOutput" class="w-1/2">
+        <div class="border border-gray-300 py-10 px-6 h-full overflow-scroll">
+          <div class="flex my-2">
+            <img v-if="otherOutput.user.avatar_url" :src="otherOutput.user.avatar_url" class="h-8 w-8 rounded-full" />
+            <div v-else class="h-8 w-8">
+              <SvgNoimage />
+            </div>
+            <p class="text-green-600 my-auto ml-1">{{ otherOutput.user.name }}さんのアウトプット （{{ $format(otherOutput.updated_at) }}）</p>
+          </div>
+          <div v-html="otherOutput.post"></div>
         </div>
+        <button @click="otherOutput = null" class="bg-yellow-300 hover:bg-yellow-400 rounded-md px-3 py-2 mt-5 float-right">自分のアウトプットへ</button>
       </div>
-      <div v-else class="w-1/2 bg-white h-auto">
+      <div v-else class="w-1/2 h-auto">
         <Editor :myOutput="myOutput" @value="value = $event" />
         <button @click="postOutput" class="bg-indigo-500 hover:bg-indigo-600 rounded-md px-3 py-2 mt-5 text-white float-right">保存</button>
       </div>
@@ -82,14 +94,17 @@ export default {
       })
     },
     async showOtherOutput(output) {
-      if (output.user.name === this.$auth.user.name ){
+      if (output.user.name === this.$auth.user.name) {
         this.otherOutput = null
       } else {
         await this.$axios.$get(`/outputs/${output.id}`).then((res) => {
-          this.otherOutput = res.output.post
+          this.otherOutput = res.output
         })
       }
     },
+    isEdited(output) {
+      return output.created_at !== output.updated_at
+    }
   },
 }
 </script>
