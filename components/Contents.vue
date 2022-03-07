@@ -52,6 +52,7 @@
       </div>
       <div v-else class="w-1/2 h-auto">
         <Editor :myOutput="myOutput" @value="value = $event" />
+        <button v-show="myOutput" @click="deleteOutput" class="bg-red-500 hover:bg-red-600 rounded-md px-3 py-2 mt-5 text-white">削除</button>
         <button @click="postOutput" class="bg-indigo-500 hover:bg-indigo-600 rounded-md px-3 py-2 mt-5 text-white float-right">保存</button>
       </div>
     </div>
@@ -88,10 +89,7 @@ export default {
           },
         })
       }
-      await this.$axios.$get(`/outputs?output[lesson]=${this.lesson.title}`).then((res) => {
-        this.outputs = res.outputs
-        this.myOutput = this.outputs.filter((e) => e.user.name === this.$auth.user.name)[0]
-      })
+      this.getOutputs()
     },
     async showOtherOutput(output) {
       if (output.user.name === this.$auth.user.name) {
@@ -104,7 +102,23 @@ export default {
     },
     isEdited(output) {
       return output.created_at !== output.updated_at
-    }
+    },
+    async deleteOutput() {
+      await this.$axios.$delete(`/outputs/${this.myOutput.id}`, {
+        data: {
+          output: {
+            lesson: this.lesson.title,
+          },
+        },
+      })
+      this.getOutputs()
+    },
+    async getOutputs() {
+      await this.$axios.$get(`/outputs?output[lesson]=${this.lesson.title}`).then((res) => {
+        this.outputs = res.outputs
+        this.myOutput = this.outputs.filter((e) => e.user.name === this.$auth.user.name)[0]
+      })
+    },
   },
 }
 </script>
