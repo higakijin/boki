@@ -14,7 +14,7 @@
         </nav>
       </div>
 
-      <div v-if="$auth.loggedIn" v-click-outside="hide" @click="toggle" class="relative ml-auto flex items-center justify-center flex-shrink-0 rounded cursor-pointer">
+      <div v-if="$auth.loggedIn" v-click-outside="hide" @click="toggle" class="relative ml-auto flex  justify-center flex-shrink-0 rounded cursor-pointer">
         <img v-if="$auth.user.avatar_url" class="w-10 h-10 rounded-full" :src="$auth.user.avatar_url" />
         <div v-else class="w-8 h-8">
           <SvgNoimage />
