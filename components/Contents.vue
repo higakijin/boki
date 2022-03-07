@@ -1,59 +1,61 @@
 <template>
-  <div class="w-full">
-    <div class="w-full h-full flex gap-x-2">
-      <div class="w-1/2 bg-white h-auto border border-gray-300 py-4 px-6">
-        <div class="mt-8">
-          <h2 class="text-xl font-bold not-italic">Question.</h2>
-          <p>
-            参考書p.{{ lesson.page }}
-            <i class="font-bold not-italic">『{{ lesson.title }}』</i>
-            を参考に、学んだことをアウトプットしてください。
-          </p>
-        </div>
-        <div class="mt-8">
-          <h2 class="text-xl font-bold not-italic">復習ポイント</h2>
-          <ul v-if="lesson.hints" class="list-inside list-disc">
-            <li v-for="hint in lesson.hints" :key="hint.id" class="m-1">{{ hint }}</li>
-          </ul>
-          <p v-else class="text-gray-400">ヒントはありません</p>
-        </div>
-        <div class="mt-8">
-          <h2 class="text-xl font-bold not-italic">投稿したユーザー</h2>
-          <div v-if="outputs[0]">
-            <div v-for="output in outputs" :key="output.id" class="mt-1 ml-1">
-              <div @click="showOtherOutput(output)" class="flex gap-x-2 cursor-pointer">
-                <img v-if="output.user.avatar_url" :src="output.user.avatar_url" class="h-8 w-8 rounded-full" />
-                <div v-else class="h-8 w-8">
-                  <SvgNoimage />
-                </div>
-                <p class="my-auto text-green-600 text-md hover:underline">
-                  {{ output.user.name }}さんのアウトプット
-                  <i class="text-sm not-italic">({{ $format(output.updated_at) }}) </i>
-                  <i v-show="isEdited(output)" class="text-gray-500 not-italic text-xs">(編集済み)</i>
-                </p>
+  <div class="w-full md:h-full flex flex-col md:flex-row gap-5 md:gap-x-2">
+    <div class="w-full md:w-1/2 bg-white h-auto border border-gray-300 py-4 px-6 pb-10">
+      <div class="mt-8">
+        <h2 class="text-xl font-bold not-italic">Question.</h2>
+        <p>
+          参考書p.{{ lesson.page }}
+          <i class="font-bold not-italic">『{{ lesson.title }}』</i>
+          を参考に、学んだことをアウトプットしてください。
+        </p>
+      </div>
+      <div class="mt-8">
+        <h2 class="text-xl font-bold not-italic">復習ポイント</h2>
+        <ul v-if="lesson.hints" class="list-inside list-disc">
+          <li v-for="hint in lesson.hints" :key="hint.id" class="m-1">{{ hint }}</li>
+        </ul>
+        <p v-else class="text-gray-400">ヒントはありません</p>
+      </div>
+      <div class="mt-8">
+        <h2 class="text-xl font-bold not-italic">投稿したユーザー</h2>
+        <div v-if="outputs[0]">
+          <div v-for="output in outputs" :key="output.id" class="mt-1 ml-1">
+            <div @click="showOtherOutput(output)" class="flex gap-x-2 cursor-pointer">
+              <img v-if="output.user.avatar_url" :src="output.user.avatar_url" class="h-8 w-8 rounded-full" />
+              <div v-else class="h-8 w-8">
+                <SvgNoimage />
               </div>
+              <p class="my-auto text-green-600 text-md hover:underline">
+                {{ output.user.name }}さんのアウトプット
+                <i class="text-sm not-italic">({{ $format(output.updated_at) }}) </i>
+                <i v-show="isEdited(output)" class="text-gray-500 not-italic text-xs">(編集済み)</i>
+              </p>
             </div>
           </div>
-          <p v-else class="text-gray-400">投稿したユーザーはいません</p>
         </div>
+        <p v-else class="text-gray-400">投稿したユーザーはいません</p>
       </div>
-      <div v-if="otherOutput" class="w-1/2">
-        <div class="border border-gray-300 py-10 px-6 h-full overflow-scroll">
-          <div class="flex my-2">
-            <img v-if="otherOutput.user.avatar_url" :src="otherOutput.user.avatar_url" class="h-8 w-8 rounded-full" />
-            <div v-else class="h-8 w-8">
-              <SvgNoimage />
-            </div>
-            <p class="text-green-600 my-auto ml-1">{{ otherOutput.user.name }}さんのアウトプット （{{ $format(otherOutput.updated_at) }}）</p>
+    </div>
+    <div v-if="otherOutput" class="w-full md:w-1/2">
+      <div class="border border-gray-300 py-10 px-6 h-full overflow-scroll">
+        <div class="flex my-2">
+          <img v-if="otherOutput.user.avatar_url" :src="otherOutput.user.avatar_url" class="h-8 w-8 rounded-full" />
+          <div v-else class="h-8 w-8">
+            <SvgNoimage />
           </div>
-          <div v-html="otherOutput.post"></div>
+          <p class="text-green-600 my-auto ml-1">{{ otherOutput.user.name }}さんのアウトプット （{{ $format(otherOutput.updated_at) }}）</p>
         </div>
-        <button @click="otherOutput = null" class="bg-yellow-300 hover:bg-yellow-400 rounded-md px-3 py-2 mt-5 float-right">自分のアウトプットへ</button>
+        <div v-html="otherOutput.post"></div>
       </div>
-      <div v-else class="w-1/2 h-auto">
+      <button @click="otherOutput = null" class="bg-yellow-300 hover:bg-yellow-400 rounded-md px-3 py-2 my-5 float-right">自分のアウトプットへ</button>
+    </div>
+    <div v-else class="w-full md:w-1/2 md:h-auto h-auto">
+      <div>
         <Editor :myOutput="myOutput" @value="value = $event" />
-        <button v-show="myOutput" @click="deleteOutput" class="bg-red-500 hover:bg-red-600 rounded-md px-3 py-2 mt-5 text-white">削除</button>
-        <button @click="postOutput" class="bg-indigo-500 hover:bg-indigo-600 rounded-md px-3 py-2 mt-5 text-white float-right">保存</button>
+      </div>
+      <div class="my-5">
+        <button v-show="myOutput" @click="deleteOutput" class="bg-red-500 hover:bg-red-600 rounded-md px-3 py-2 text-white">削除</button>
+        <button @click="postOutput" class="bg-indigo-500 hover:bg-indigo-600 rounded-md px-3 py-2 text-white float-right">保存</button>
       </div>
     </div>
   </div>

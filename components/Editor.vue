@@ -1,7 +1,5 @@
 <template>
-  <div class="h-full">
-    <vue-editor id="editor" v-model="content" useCustomImageHandler @imageAdded="handleImageAdded" style="height: 72vh;"/>
-  </div>
+  <vue-editor id="editor" v-model="content" useCustomImageHandler @imageAdded="handleImageAdded"/>
 </template>
 <script>
 export default {
@@ -45,3 +43,10 @@ export default {
   }
 }
 </script>
+
+
+<style>
+#editor {
+  height: 72vh;
+}
+</style>
