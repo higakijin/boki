@@ -49,11 +49,11 @@
       </div>
       <button @click="otherOutput = null" class="bg-yellow-300 hover:bg-yellow-400 rounded-md px-3 py-2 my-5 float-right">自分のアウトプットへ</button>
     </div>
-    <div v-else class="w-full md:w-1/2 md:h-auto h-auto">
+    <div v-else class="w-full md:w-1/2 md:h-auto h-auto mb-5">
       <div>
         <Editor :myOutput="myOutput" @value="value = $event" />
       </div>
-      <div class="my-5">
+      <div class="mt-5">
         <button v-show="myOutput" @click="deleteOutput" class="bg-red-500 hover:bg-red-600 rounded-md px-3 py-2 text-white">削除</button>
         <button @click="postOutput" class="bg-indigo-500 hover:bg-indigo-600 rounded-md px-3 py-2 text-white float-right">保存</button>
       </div>
