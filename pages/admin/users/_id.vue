@@ -106,8 +106,13 @@
                       <div class="text-teal-600">2級工業　Chapter.1　Lesson.1</div>
                       <div class="text-gray-500 text-xs">2021.11.19</div>
                     </li>
-                    <li>
-                      <div class="text-teal-600">2級工業　Chapter.1　Lesson.2</div>
+                    {{ user.outputs }}
+                    <li v-for="output in user.outputs" :key="output.id">
+                      <NuxtLink :to="`/outputs/output.id`" class="text-teal-600">
+                        2級工業
+                        Chapter.{{ output.lesson.chapter_id}}
+                        {{ output.lesson.name}}
+                      </NuxtLink>
                       <div class="text-gray-500 text-xs">2021.11.19</div>
                     </li>
                   </ul>
