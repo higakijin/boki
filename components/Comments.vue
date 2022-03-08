@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-for="comment in comments" :key="comment.id">
-      <div v-if="comment.user_name === $auth.user.name" class="flex mt-1">
+      <div v-if="comment.user_name === $auth.user.name" class="flex mt-1 justify-end">
         <div class="mb-2 mt-auto text-xs text-gray-400 mx-2">{{ $format(comment.created_at) }}</div>
         <div class="speech-bubble-right mr-10 mb-2 align-center flex">
           <p class="my-auto p-2 text-sm text-white">{{ comment.body }}</p>

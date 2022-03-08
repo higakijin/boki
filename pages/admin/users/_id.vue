@@ -9,12 +9,12 @@
               <div class="image overflow-hidden">
                 <img class="h-auto w-full mx-auto" :src="user.avatar_url" alt="" />
               </div>
-              <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">{{ user.name}}</h1>
+              <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">{{ user.name }}</h1>
               <h3 class="text-gray-600 font-lg text-semibold leading-6">{{ user.email }}</h3>
               <ul class="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
                 <li class="flex items-center py-3">
                   <span>最終ログイン</span>
-                  <span class="ml-auto"><span class="bg-green-500 py-1 px-2 rounded text-white text-sm">ログイン中</span></span>
+                  <span class="ml-auto">{{ $format(user.updated_at) }}</span>
                 </li>
                 <li class="flex items-center py-3">
                   <span>会員登録</span>
@@ -37,7 +37,7 @@
                 <div class="grid md:grid-cols-2 text-sm">
                   <div class="grid grid-cols-2">
                     <div class="px-4 py-2 font-semibold">Name</div>
-                    <div class="px-4 py-2">{{ user.name}}</div>
+                    <div class="px-4 py-2">{{ user.name }}</div>
                   </div>
                   <div class="grid grid-cols-2">
                     <div class="px-4 py-2 font-semibold">Email</div>
@@ -102,18 +102,14 @@
                     <span class="tracking-wide">学習履歴</span>
                   </div>
                   <ul class="list-inside space-y-2">
-                    <li>
-                      <div class="text-teal-600">2級工業　Chapter.1　Lesson.1</div>
-                      <div class="text-gray-500 text-xs">2021.11.19</div>
-                    </li>
-                    {{ user.outputs }}
                     <li v-for="output in user.outputs" :key="output.id">
-                      <NuxtLink :to="`/outputs/output.id`" class="text-teal-600">
-                        2級工業
-                        Chapter.{{ output.lesson.chapter_id}}
-                        {{ output.lesson.name}}
+                      {{ output.chapter }}
+                      <NuxtLink :to="`/${output.level_name_en}/chapter/${output.chapter_order}/lesson/${output.lesson.order}`" class="text-green-600 hover:underline">
+                        {{ output.level_name_ja }}
+                        Chapter.{{ output.chapter_order }} Lesson.{{ output.lesson.order }}
+                        {{ output.lesson.name }}
                       </NuxtLink>
-                      <div class="text-gray-500 text-xs">2021.11.19</div>
+                      <div class="text-gray-500 text-xs">{{ $format(output.updated_at) }}</div>
                     </li>
                   </ul>
                 </div>
@@ -135,9 +131,8 @@ export default {
   },
   async asyncData({ $axios, params }) {
     const res = await $axios.$get(`/admin/users/${params.id}`)
-    console.log(res.user)
     return {
-      user: res.user
+      user: res.user,
     }
   },
 }
