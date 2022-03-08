@@ -1,18 +1,16 @@
 <template>
   <div>
     <Nav />
-
     <div class="bg-gray-100">
-
       <div class="container mx-auto my-5 p-5">
         <div class="md:flex no-wrap md:-mx-2">
           <div class="w-full md:w-3/12 md:mx-2">
             <div class="bg-white p-3 border-t-4 border-green-400">
               <div class="image overflow-hidden">
-                <img class="h-auto w-full mx-auto" src="https://lavinephotography.com.au/wp-content/uploads/2017/01/PROFILE-Photography-112.jpg" alt="" />
+                <img class="h-auto w-full mx-auto" :src="user.avatar_url" alt="" />
               </div>
-              <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">higakijin</h1>
-              <h3 class="text-gray-600 font-lg text-semibold leading-6">hm385.chejptks@gmail.com</h3>
+              <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">{{ user.name}}</h1>
+              <h3 class="text-gray-600 font-lg text-semibold leading-6">{{ user.email }}</h3>
               <ul class="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
                 <li class="flex items-center py-3">
                   <span>最終ログイン</span>
@@ -20,7 +18,7 @@
                 </li>
                 <li class="flex items-center py-3">
                   <span>会員登録</span>
-                  <span class="ml-auto">2021.10.09</span>
+                  <span class="ml-auto">{{ $format(user.created_at) }}</span>
                 </li>
               </ul>
             </div>
@@ -39,19 +37,19 @@
                 <div class="grid md:grid-cols-2 text-sm">
                   <div class="grid grid-cols-2">
                     <div class="px-4 py-2 font-semibold">Name</div>
-                    <div class="px-4 py-2">higakijin</div>
+                    <div class="px-4 py-2">{{ user.name}}</div>
                   </div>
                   <div class="grid grid-cols-2">
                     <div class="px-4 py-2 font-semibold">Email</div>
-                    <div class="px-4 py-2">hm385.chejptks@gmail.com</div>
+                    <div class="px-4 py-2">{{ user.email }}</div>
                   </div>
                   <div class="grid grid-cols-2">
                     <div class="px-4 py-2 font-semibold">学習中のレベル</div>
-                    <div class="px-4 py-2">2級工業</div>
+                    <div class="px-4 py-2">{{ user.level_id }}</div>
                   </div>
                   <div class="grid grid-cols-2">
                     <div class="px-4 py-2 font-semibold">プラン</div>
-                    <div class="px-4 py-2">プロ</div>
+                    <div class="px-4 py-2">{{ user.ticket }}</div>
                   </div>
                   <div class="grid grid-cols-2">
                     <div class="px-4 py-2 font-semibold">最終支払日</div>
@@ -59,7 +57,7 @@
                   </div>
                   <div class="grid grid-cols-2">
                     <div class="px-4 py-2 font-semibold">次回支払予想</div>
-                    <div class="px-4 py-2">永久ライセンス</div>
+                    <div class="px-4 py-2">{{ user.ticket }}</div>
                   </div>
                 </div>
               </div>
@@ -116,7 +114,6 @@
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
@@ -124,19 +121,33 @@
   </div>
 </template>
 
+<script>
+export default {
+  middleware({ redirect, store }) {
+    if (!store.$auth.$state.user.is_admin) {
+      redirect('/about')
+    }
+  },
+  async asyncData({ $axios, params }) {
+    const res = await $axios.$get(`/admin/users/${params.id}`)
+    console.log(res.user)
+    return {
+      user: res.user
+    }
+  },
+}
+</script>
+
 <style>
 :root {
   --main-color: #4a76a8;
 }
-
 .bg-main-color {
   background-color: var(--main-color);
 }
-
 .text-main-color {
   color: var(--main-color);
 }
-
 .border-main-color {
   border-color: var(--main-color);
 }
