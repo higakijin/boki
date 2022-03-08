@@ -1,10 +1,9 @@
 <template>
-  <div class="flex w-screen h-screen text-gray-700">
-    <Icons />
-    <Dropdown :item="item" />
-    <div class="flex flex-col flex-grow h-full">
-      <Header :pages="pages" />
-      <Contents />
+  <div class="w-screen md:h-screen text-gray-700">
+    <Nav />
+    <div class="max-w-7xl mx-5 md:mx-auto flex flex-col md:flex-row gap-5 h-4/5">
+      <Dropdown :item="item" class="w-full md:w-1/5" />
+      <Contents :item="item" class="w-full md:w-4/5" />
     </div>
   </div>
 </template>
@@ -16,19 +15,19 @@ export default {
       redirect('/')
     }
   },
-  data() {
-    return {
-      item: {
-        subject: 'second_industrial',
-        title: this.$secondIndustrialChapters[this.$route.params.chapterId - 1].title,
-        lessons: this.$secondIndustrialChapters[this.$route.params.chapterId - 1].lessons,
-      },
-      pages: [
-        { name: 'コース選択', link: '/dashbord' },
-        { name: '2級工業簿記', link: '/second_industrial' },
-        { name: `Chapter.${this.$route.params.chapterId}`, link: `/second_industrial/chapter/${this.$route.params.chapterId}/lesson/${this.$route.params.lessonId}` },
-        { name: `Lesson.${this.$route.params.lessonId}`, link: `/second_industrial/chapter/${this.$route.params.chapterId}/lesson/${this.$route.params.lessonId}` },
-      ],
+  async asyncData({ $axios, $secondIndustrialChapters, params }) {
+    const chapter = $secondIndustrialChapters[params.chapterId - 1]
+    const lesson_name = chapter.lessons[params.lessonId - 1].title
+    const res = await $axios.$get(`/outputs?output[lesson]=${lesson_name}`)
+    if (res) {
+      return {
+        item: {
+          subject: 'second_industrial',
+          title: chapter.title,
+          lessons: chapter.lessons,
+          outputs: res.outputs,
+        }
+      }
     }
   },
 }

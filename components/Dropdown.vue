@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col w-56 border-r border-gray-300">
+  <div class="flex flex-col border border-gray-300">
     <button class="relative text-sm focus:outline-none group">
       <div class="flex items-center justify-between w-full h-16 px-4 border-b border-gray-300 hover:bg-gray-300">
         <div>
@@ -15,17 +15,19 @@
       </div>
     </button>
     <div class="flex flex-col flex-grow p-4 overflow-auto gap-y-3">
-      <NuxtLink v-for="lesson in lessons" :key="lesson.id" class="flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-gray-300" :to="`/${item.subject}/chapter/${$route.params.chapterId}/lesson/${lesson.id}`">
-        <span class="leading-none">{{ lesson.id }}. {{ lesson.title }}</span>
+      <NuxtLink
+        v-for="lesson in lessons"
+        :key="lesson.id"
+        class="flex items-center flex-shrink-0 text-sm font-medium rounded hover:bg-gray-300"
+        :class="{ 'bg-indigo-500 hover:bg-indigo-500 text-white': lesson.id === parseInt($route.params.lessonId) }"
+        :to="`/${item.subject}/chapter/${$route.params.chapterId}/lesson/${lesson.id}`"
+      >
+        <span class="leading-none p-2">{{ lesson.id }}. {{ lesson.title }}</span>
       </NuxtLink>
       <div class="mt-auto">
-        <div @click="$emit('backPresentetion')"  class="flex items-center flex-shrink-0 h-10 px-3 mt-4 text-sm font-medium bg-gray-200 rounded hover:bg-gray-300 cursor-pointer">
-          <SvgBack />
-          <span class="ml-2 leading-none">スライドに戻る</span>
-        </div>
-        <NuxtLink class="flex items-center flex-shrink-0 h-10 px-3 mt-4 text-sm font-medium bg-gray-200 rounded hover:bg-gray-300" :to="`/${item.subject}`">
+        <NuxtLink class="flex items-center flex-shrink-0 h-10 px-3 mt-4 text-sm font-medium bg-gray-200 rounded hover:bg-yellow-300 bg-yellow-200" :to="`/${item.subject}`">
           <SvgCancel />
-          <span class="ml-2 leading-none">諦める</span>
+          <span class="ml-2 leading-none">やめる</span>
         </NuxtLink>
       </div>
     </div>
@@ -39,6 +41,7 @@ export default {
     return {
       title: this.item.title,
       lessons: this.item.lessons,
+      isBgcolor: false,
     }
   },
 }

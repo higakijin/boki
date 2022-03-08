@@ -1,8 +1,7 @@
 <template>
-  <div class="flex w-screen h-screen text-gray-700 overflow-hidden">
-    <Icons />
-    <div class="flex flex-col flex-grow h-full">
-      <Header :pages="pages" />
+  <div class="w-screen h-screen text-gray-700">
+    <Nav />
+    <div class="flex flex-col flex-grow">
       <Chapters :chapters="chapters" />
     </div>
   </div>
@@ -21,11 +20,10 @@ export default {
         parents: this.$secondCommercialChapters,
         title: '2商',
         body: '2級商業簿記',
+        svg: 'SvgLevelBussiness',
+        introduction: `簿記2級の大問1~3に登場する商業簿記を学習します。
+        実務にも大きく役立つので、心してかかりましょう！`
       },
-      pages: [
-        { name: 'コース選択', link: '/dashbord' },
-        { name: '2級商業簿記', link: '/second_commercial' },
-      ],
     }
   },
 }
