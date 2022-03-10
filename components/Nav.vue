@@ -21,6 +21,7 @@
         </div>
         <div v-show="opened" class="z-10 absolute right-0 top-8 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
           <NuxtLink to="/profile" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">プロフィール</NuxtLink>
+          <NuxtLink v-show="$auth.user.is_admin" to="/admin/users" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">アドミン</NuxtLink>
           <div @click="logout" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer">ログアウト</div>
         </div>
       </div>
