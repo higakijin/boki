@@ -11,7 +11,7 @@
           <div v-if="false" class="h-8 w-8 rounded-full bg-blue-500 m-2 flex">
             <p class="text-white mx-auto my-auto text-xl font-bold">{{ chapters.title }}</p>
           </div>
-          <div v-else class="h-8 w-8 rounded-full bg-yellow-400 m-2 flex">
+          <div v-else class="h-8 w-8 rounded-full bg-indigo-500 m-2 flex">
             <SvgCheck />
           </div>
           <p class="text-xl my-auto px-4">Chapter.{{ chapter.id }}　{{ chapter.title }}</p>

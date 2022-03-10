@@ -102,7 +102,7 @@
                     <span class="tracking-wide">学習履歴</span>
                   </div>
                   <ul class="list-inside space-y-2">
-                    <li v-for="output in user.outputs" :key="output.id">
+                    <li v-for="output in reverseOutputs" :key="output.id">
                       {{ output.chapter }}
                       <NuxtLink :to="`/${output.level_name_en}/chapter/${output.chapter_order}/lesson/${output.lesson.order}`" class="text-green-600 hover:underline">
                         {{ output.level_name_ja }}
@@ -110,6 +110,8 @@
                         {{ output.lesson.name }}
                       </NuxtLink>
                       <div class="text-gray-500 text-xs">{{ $format(output.updated_at) }}</div>
+                      <button v-if="!output.be_finished" @click.prevent="admitOutput(output)" class="bg-red-500 text-white p-2 rounded-lg">合格させる</button>
+                      <button v-else @click.prevent="admitOutput(output)" class="bg-yellow-500 text-white p-2 rounded-lg">合格を取り消す</button>
                     </li>
                   </ul>
                 </div>
@@ -135,6 +137,19 @@ export default {
       user: res.user,
     }
   },
+  computed: {
+    reverseOutputs() {
+      return this.user.outputs.reverse();
+    },
+  },
+  methods: {
+    async admitOutput(output) {
+      await this.$axios.$put(`/admin/outputs/${output.id}`)
+      .then(res => {
+        this.user = res.user
+      })
+    },
+  }
 }
 </script>
 
