@@ -7,9 +7,9 @@
         <div v-else class="w-28 h-28 mx-auto rounded-full -mt-20 border-8 border-white">
           <SvgNoimage />
         </div>
-        <div class="text-center mt-2 text-3xl font-medium">{{ this.$auth.user.name }}</div>
-        <div class="text-center mt-2 font-light text-sm">{{ this.$auth.user.email }}</div>
-        <div v-if="$auth.user.level_id" class="text-center mt-4 font-normal text-lg">2級工業簿記を学習中</div>
+        <div class="text-center mt-2 text-3xl font-medium">{{ $auth.user.name }}</div>
+        <div class="text-center mt-2 font-light text-sm">{{ $auth.user.email }}</div>
+        <div v-if="$auth.user.level" class="text-center mt-4 font-normal text-lg">{{ $auth.user.level.name }}を勉強中</div>
         <div v-else class="text-center mt-4 font-normal text-md">学習中のレッスンはありません</div>
         <hr class="mt-8" />
         <div class="flex p-4">

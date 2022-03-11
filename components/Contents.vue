@@ -2,6 +2,9 @@
   <div class="w-full md:h-full flex flex-col md:flex-row gap-5 md:gap-x-2">
     <div class="w-full md:w-1/2 bg-white h-auto border border-gray-300 py-4 px-6 pb-10 overflow-scroll">
       <div class="mt-8">
+        <div v-show="myOutput && myOutput.be_finished" class="inline-block py-2">
+          <p class="bg-red-500 rounded-lg px-2 text-white">合格しました！</p>
+        </div>
         <h2 class="text-xl font-bold not-italic">Question</h2>
         <p>
           参考書p.{{ lesson.page }}
