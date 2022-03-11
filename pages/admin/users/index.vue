@@ -26,7 +26,8 @@
               <td class="px-5"><img class="h-8" :src="user.avatar_url" /></td>
               <td class="p-3 px-5">{{ user.name }}</td>
               <td class="p-3 px-5">{{ user.email }}</td>
-              <td class="p-3 px-5">{{ user.level }}</td>
+              <td v-if="user.level" class="p-3 px-5">{{ user.level.name }}</td>
+              <td v-else class="p-3 px-5">学習中のレベルはありません。</td>
               <td class="p-3 px-5">{{ user.ticket }}</td>
               <td class="p-3 px-5">2021.12.24</td>
               <td class="p-3 px-5">{{ user.is_pro }}</td>
@@ -54,6 +55,6 @@ export default {
     return {
       users: res.users
     }
-  },
+  }
 }
 </script>

@@ -45,7 +45,8 @@
                   </div>
                   <div class="grid grid-cols-2">
                     <div class="px-4 py-2 font-semibold">学習中のレベル</div>
-                    <div class="px-4 py-2">{{ user.level_id }}</div>
+                    <div v-if="user.level" class="px-4 py-2">{{ user.level.name }}</div>
+                    <div v-else class="px-4 py-2">なし</div>
                   </div>
                   <div class="grid grid-cols-2">
                     <div class="px-4 py-2 font-semibold">プラン</div>
