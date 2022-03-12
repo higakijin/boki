@@ -78,7 +78,7 @@
                 <span class="block xl:inline">会計を身につけて</span>
                 <span class="block text-indigo-600 xl:inline">最強のビジネスマンへ！</span>
               </h1>
-              <p class="mx-auto text-base text-gray-500 sm:max-w-md lg:text-xl md:max-w-3xl">It's never been easier to build beautiful websites that convey your message and tell your story.</p>
+              <p class="mx-auto text-base text-gray-500 sm:max-w-md lg:text-xl md:max-w-3xl">今日が人生で一番若い日！今すぐ始めましょう！</p>
               <div class="relative flex flex-col sm:flex-row sm:space-x-4">
                 <NuxtLink to="/signup" class="flex items-center w-full px-6 py-3 mb-3 text-lg text-white bg-indigo-600 rounded-md sm:mb-0 hover:bg-indigo-700 sm:w-auto">
                   Try It Free
