@@ -27,6 +27,10 @@
               <a href="#" class="text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700">Forgot Password?</a>
             </div>
 
+            <ul v-show="errors[0]" class="mt-4 pl-5">
+              <li v-for="error in errors" :key="error.id" class="text-sm text-red-500 list-disc">{{ error }}</li>
+            </ul>
+
             <button type="submit" class="w-full block bg-indigo-500 hover:bg-indigo-400 focus:bg-indigo-400 text-white font-semibold rounded-lg px-4 py-3 mt-6">Log In</button>
           </form>
 
@@ -57,6 +61,7 @@ export default {
     return {
       email: '',
       password: '',
+      errors: [],
     }
   },
   methods: {
@@ -73,7 +78,7 @@ export default {
           this.$router.push('/dashbord')
         })
         .catch((e) => {
-          console.log(e)
+          this.errors = e.response.data.errors
         })
     },
   },
