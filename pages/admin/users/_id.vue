@@ -74,20 +74,13 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                       </svg>
                     </span>
-                    <span class="tracking-wide">購入履歴</span>
+                    <span class="tracking-wide">プラン変更（現在：{{ user.plan }}）</span>
                   </div>
                   <ul class="list-inside space-y-2">
                     <li>
-                      <div class="text-teal-600">プラスチケット</div>
-                      <div class="text-gray-500 text-xs">2021.10.11 - 2021.11.10</div>
-                    </li>
-                    <li>
-                      <div class="text-teal-600">プラスチケット</div>
-                      <div class="text-gray-500 text-xs">2021.11.11 - 2021.12.10</div>
-                    </li>
-                    <li>
-                      <div class="text-teal-600">プロチケット</div>
-                      <div class="text-gray-500 text-xs">2021.12.24 - 永久</div>
+                      <button @click.prevent="changePlan('basic')" class="bg-blue-500 text-white p-2 rounded-lg">ベーシック</button>
+                      <button @click.prevent="changePlan('plus')" class="bg-yellow-500 text-white p-2 rounded-lg">プラス</button>
+                      <button @click.prevent="changePlan('pro')" class="bg-red-500 text-white p-2 rounded-lg">プロ</button>
                     </li>
                   </ul>
                 </div>
@@ -150,6 +143,15 @@ export default {
         this.user = res.user
       })
     },
+    async changePlan(plan) {
+      await this.$axios.$put(`/admin/users/${this.$route.params.id}`, {
+        user: {
+          plan: plan
+        }
+      }).then((res) => {
+        this.user = res.user
+      })
+    }
   }
 }
 </script>
