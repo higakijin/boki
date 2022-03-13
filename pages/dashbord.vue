@@ -28,7 +28,7 @@ export default {
   data() {
     return {
       courses: [
-        { title: '3', body: '3級（商業）', name: '3級簿記', text: 'キホンのキホン。まずはここから', link: '/third', svg: 'SvgLevelBasic' },
+        { title: '3', body: '3級（商業）', name: '3級簿記', text: 'キホンのキホン。まずはここから　※現在準備中です', link: '/third', svg: 'SvgLevelBasic' },
         { title: '2工', body: '2級工業', name: '2級工業簿記', text: '大きな得点源。完璧にしよう', link: '/second_industrial', svg: 'SvgLevelFactory' },
         { title: '2商', body: '2級商業', name: '2級商業簿記', text: '実務に役立つ重要ポイント', link: '/second_commercial', svg: 'SvgLevelBussiness' },
       ],
