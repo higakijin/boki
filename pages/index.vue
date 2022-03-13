@@ -7,9 +7,9 @@
         <div class="max-w-lg mx-auto text-center lg:text-left lg:pr-12">
           <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl">最強の簿記学習ツール</h2>
 
-          <p class="mt-4 text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit ratione sed cumque molestiae dolores eaque odit corporis accusamus reprehenderit laborum?</p>
+          <p class="mt-4 text-gray-500">インプットをしたらアウトプット！簿記を習得して最強のビジネスマンになろう！</p>
 
-          <NuxtLink to="/dashbord" class="inline-block px-5 py-3 mt-8 text-sm font-medium text-white bg-indigo-500 rounded-lg">いますぐ始める</NuxtLink>
+          <NuxtLink to="/signup" class="inline-block px-5 py-3 mt-8 text-sm font-medium text-white bg-indigo-500 rounded-lg">いますぐ始める</NuxtLink>
         </div>
       </div>
 
@@ -33,12 +33,12 @@
               <p class="box-border m-0 text-6xl font-semibold leading-normal text-center border-0 border-gray-200 not-italic">￥0</p>
               <p class="box-border my-0 ml-4 mr-0 text-xs text-left border-0 border-gray-200"><span class="block">per month</span></p>
             </div>
-
-            <button
+            <NuxtLink
+              to="/signup"
               class="inline-flex items-center justify-center w-full py-3 mt-6 font-sans text-sm leading-none text-center text-indigo-600 no-underline bg-transparent border border-b-2 border-indigo-600 rounded-md cursor-pointer hover:bg-indigo-600 hover:border-indigo-600 hover:text-white sm:text-base sm:mt-8 md:text-lg"
             >
               Select Plan
-            </button>
+            </NuxtLink>
           </div>
           <div class="box-border px-4 py-8 mb-6 text-center bg-gray-100 border border-gray-300 border-solid lg:mb-0 sm:px-4 sm:py-8 md:px-8 md:py-12 lg:px-10">
             <h3 class="m-0 text-2xl font-semibold leading-tight tracking-tight text-black border-0 border-solid sm:text-3xl md:text-4xl">Plus</h3>
@@ -47,7 +47,9 @@
               <p class="box-border m-0 text-6xl font-semibold leading-normal text-center border-0 border-gray-200">￥980</p>
               <p class="box-border my-0 ml-4 mr-0 text-xs text-left border-0 border-gray-200"><span class="block">per month</span></p>
             </div>
-            <button class="inline-flex items-center justify-center w-full py-3 mt-6 font-sans text-sm leading-none text-center text-white no-underline bg-indigo-600 border-b-4 border-indigo-700 rounded cursor-pointer hover:text-white sm:text-base sm:mt-8 md:text-lg">Select Plan</button>
+            <NuxtLink to="/signup" class="inline-flex items-center justify-center w-full py-3 mt-6 font-sans text-sm leading-none text-center text-white no-underline bg-indigo-600 border-b-4 border-indigo-700 rounded cursor-pointer hover:text-white sm:text-base sm:mt-8 md:text-lg"
+              >Select Plan</NuxtLink
+            >
           </div>
           <div class="box-border px-4 py-8 text-center bg-white border-solid sm:px-4 sm:py-8 md:px-8 md:py-12 lg:px-10">
             <h3 class="m-0 text-2xl font-semibold leading-tight tracking-tight text-black border-0 border-solid sm:text-3xl md:text-4xl">Pro</h3>
@@ -55,11 +57,12 @@
             <div class="flex items-center justify-center mt-6 leading-7 text-gray-900 border-0 border-solid sm:mt-8">
               <p class="box-border m-0 text-6xl font-semibold leading-normal text-center border-0 border-gray-200">￥14,980</p>
             </div>
-            <button
+            <NuxtLink
+              to="/signup"
               class="inline-flex items-center justify-center w-full py-3 mt-6 font-sans text-sm leading-none text-center text-indigo-600 no-underline bg-transparent border border-b-2 border-indigo-600 rounded cursor-pointer hover:bg-indigo-600 hover:border-indigo-600 hover:text-white sm:text-base sm:mt-8 md:text-lg"
             >
               Select Plan
-            </button>
+            </NuxtLink>
           </div>
         </div>
       </div>
@@ -75,9 +78,9 @@
                 <span class="block xl:inline">会計を身につけて</span>
                 <span class="block text-indigo-600 xl:inline">最強のビジネスマンへ！</span>
               </h1>
-              <p class="mx-auto text-base text-gray-500 sm:max-w-md lg:text-xl md:max-w-3xl">It's never been easier to build beautiful websites that convey your message and tell your story.</p>
+              <p class="mx-auto text-base text-gray-500 sm:max-w-md lg:text-xl md:max-w-3xl">今日が人生で一番若い日！今すぐ始めましょう！</p>
               <div class="relative flex flex-col sm:flex-row sm:space-x-4">
-                <NuxtLink to="/dashbord" class="flex items-center w-full px-6 py-3 mb-3 text-lg text-white bg-indigo-600 rounded-md sm:mb-0 hover:bg-indigo-700 sm:w-auto">
+                <NuxtLink to="/signup" class="flex items-center w-full px-6 py-3 mb-3 text-lg text-white bg-indigo-600 rounded-md sm:mb-0 hover:bg-indigo-700 sm:w-auto">
                   Try It Free
                   <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 ml-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <line x1="5" y1="12" x2="19" y2="12"></line>

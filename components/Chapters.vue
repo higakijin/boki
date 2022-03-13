@@ -15,9 +15,9 @@
             <SvgCheck />
           </div>
           <p class="text-xl my-auto px-4">Chapter.{{ chapter.id }}　{{ chapter.title }}</p>
-          <div class="ml-auto my-auto mr-3">
+          <!-- <div class="ml-auto my-auto mr-3">
             <SvgLock />
-          </div>
+          </div> -->
         </NuxtLink>
       </div>
     </div>

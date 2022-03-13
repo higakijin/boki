@@ -33,6 +33,10 @@
               <input type="password" v-model="password_confirmation" id="" placeholder="Enter Password Again" minlength="6" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" required />
             </div>
 
+            <ul v-show="errors[0]" class="mt-4 pl-5">
+              <li v-for="error in errors" :key="error.id" class="text-sm text-red-500 list-disc">{{ error }}</li>
+            </ul>
+
             <button type="submit" class="w-full block bg-indigo-500 hover:bg-indigo-400 focus:bg-indigo-400 text-white font-semibold rounded-lg px-4 py-3 mt-6">Log In</button>
           </form>
 
@@ -65,10 +69,12 @@ export default {
       email: '',
       password: '',
       password_confirmation: '',
+      errors: []
     }
   },
   methods: {
     async signup() {
+      this.errors = []
       await this.$axios
         .$post('/auth', {
           name: this.name,
@@ -89,7 +95,7 @@ export default {
             })
         })
         .catch((e) => {
-          console.log(e)
+          this.errors = e.response.data.errors.full_messages
         })
     },
   },

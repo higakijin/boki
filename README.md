@@ -1,68 +1,104 @@
-# boki
+# アプリ概要
+## アプリのURL
+https://www.bokunoboki.com/
 
-## Build Setup
+## 画像
+-  トップページ
+[![Image from Gyazo](https://i.gyazo.com/c70d37fe811a964321514115b5969dcc.png)](https://gyazo.com/c70d37fe811a964321514115b5969dcc)
 
-```bash
-# install dependencies
-$ npm install
+- ログイン
+[![Image from Gyazo](https://i.gyazo.com/1e8b5d74243aea2602707a558f0380d7.png)](https://gyazo.com/1e8b5d74243aea2602707a558f0380d7)
 
-# serve with hot reload at localhost:3000
-$ npm run dev
+- ダッシュボード
+[![Image from Gyazo](https://i.gyazo.com/d849e76d3675554ae720d6c404928808.png)](https://gyazo.com/d849e76d3675554ae720d6c404928808)
 
-# build for production and launch server
-$ npm run build
-$ npm run start
+- チャプターの一覧
+[![Image from Gyazo](https://i.gyazo.com/f76da80d6ee5b9b639fa0d9ce69b5b1a.png)](https://gyazo.com/f76da80d6ee5b9b639fa0d9ce69b5b1a)
 
-# generate static project
-$ npm run generate
-```
+- アウトプットの画面
+[![Image from Gyazo](https://i.gyazo.com/80dcc0290b84b6ef307285fb6e860c5b.png)](https://gyazo.com/80dcc0290b84b6ef307285fb6e860c5b)
 
-For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
+- 他人のアウトプットのコメント
+[![Image from Gyazo](https://i.gyazo.com/f3cb16f26874a21002445adc4d784c7d.png)](https://gyazo.com/f3cb16f26874a21002445adc4d784c7d)
 
-## Special Directories
+- 管理者画面
+[![Image from Gyazo](https://i.gyazo.com/79837716c8b1269c3dd28537042680ca.png)](https://gyazo.com/79837716c8b1269c3dd28537042680ca)
+[![Image from Gyazo](https://i.gyazo.com/7fe66253f0c8b93d645022c7d2f75d2e.png)](https://gyazo.com/7fe66253f0c8b93d645022c7d2f75d2e)
 
-You can create the following extra directories, some of which have special behaviors. Only `pages` is required; you can delete them if you don't want to use their functionality.
+##  僕のボキとは
+私は現在簿記を勉強しています。  
+基本的にはテキストを読んで問題演習をするといったことの繰り返しなのですが、「だれかに学習のサポートをしてほしいな」と感じることがありました。  
+そんな経験から取得した後は、簿記学習のサポートをココナラのようなスキル販売サイトで行いたいと考え、今回その時に使うアプリを想定して開発しました。
 
-### `assets`
+## 基本的な使い方
+参考書の各チャプターを読んでもらい、学んだことをこのアプリにアウトプットしてもらいます。  
+参考書には[パブロフ流でみんな合格 日商簿記](https://www.amazon.co.jp/%E7%B0%BF%E8%A8%98%E6%95%99%E7%A7%91%E6%9B%B8-%E3%83%91%E3%83%96%E3%83%AD%E3%83%95%E6%B5%81%E3%81%A7%E3%81%BF%E3%82%93%E3%81%AA%E5%90%88%E6%A0%BC-%E6%97%A5%E5%95%86%E7%B0%BF%E8%A8%982%E7%B4%9A-%E5%95%86%E6%A5%AD%E7%B0%BF%E8%A8%98-2021%E5%B9%B4%E5%BA%A6%E7%89%88/dp/4798168475/?_encoding=UTF8&pd_rd_w=VPQT4&pf_rd_p=0bb824f3-323d-45b0-8a2a-126f1b7fc966&pf_rd_r=1JW3NRQYQV8EH42F11XV&pd_rd_r=4af0a16b-2d83-4cd8-9bc5-de497d3b003b&pd_rd_wg=rhmD9&ref_=pd_gw_ci_mcx_mr_hp_atf_m)
+シリーズ（よせだあつこさん著）を使用します。（理由は自分が使用していたため）  
+ 
+それぞれのアウトプットに対してコメントを通してディスカッションすることができ、その都度修正してもらい、管理者（私）が問題ないと判断したら合格点をもらえます。  
 
-The assets directory contains your uncompiled assets such as Stylus or Sass files, images, or fonts.
+（3級は教材が私の手元にないため、現在は2級工業簿記・商業簿記のみ対応としています。）
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/assets).
+## プランについて
+予定では
+- ベーシック: 1週間のお試しコース
+- プラス: 1ヶ月980円コース
+- プロ:　合格するまでの永久対応の14,980円コース
 
-### `components`
+を考えています。
 
-The components directory contains your Vue.js components. Components make up the different parts of your page and can be reused and imported into your pages, layouts and even other components.
+当初はアプリ自体にStripeやPay.jpなどの外部決済サービスの導入を考えていましたが、（ココナラのような）スキル販売サイト上で取引できること、顧客情報流出のリスクがあることを考慮し、導入しませんでした。
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/components).
+# 技術面
+## 言語など
+- フロントエンド: Nuxt.js(Vue.js) 2.15.8
+- バックエンド: Ruby on Rails 6.1.4.6 APIモード  
+  (バックエンドのリポジトリは https://github.com/higakijin/boki-backend です)
+- デプロイ先: Heroku
+- 画像ストレージはAmazon S3を使用
+- 独自ドメインは お名前.com にて取得
 
-### `layouts`
+## ER図
+[![Image from Gyazo](https://i.gyazo.com/30ca8ddf1107143959c09c2ecfb8051f.png)](https://gyazo.com/30ca8ddf1107143959c09c2ecfb8051f)
 
-Layouts are a great help when you want to change the look and feel of your Nuxt app, whether you want to include a sidebar or have distinct layouts for mobile and desktop.
+### 各テーブル、カラムについて
+- user  
+  ユーザー情報についてのテーブル。  
+  devise-token-authという認証系のGemで追加
+  - name: 名前
+  - email: メールアドレス
+  - password, password_confirmation:　パスワード
+  - is_admin: 管理者かどうかの情報。デフォルトはfalse
+  - level_id: ユーザーがどのレベルの内容に取り組んでいるのかをわかるようにする外部キー
+  - plan: 契約しているプランを示す。basic, plus, proのどれか。
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/layouts).
+- level  
+学習コンテンツのレベルを示したテーブル。  
+具体的には、3級簿記、2級工業簿記、2級商業簿記のどれか。
+  - name: コンテンツの名前
 
-### `pages`
+- chapter  
+levelの中の、チャプターについてのテーブル  
+levelが2級工業簿記の場合は、「材料費」「労務費」「経費」などが当てはまる。
+  - name: チャプターの名前
+  - level_id: どのレベルのチャプターなのかを示す外部キー
 
-This directory contains your application views and routes. Nuxt will read all the `*.vue` files inside this directory and setup Vue Router automatically.
+- lesson  
+  chapterの中の、レッスンについてのテーブル  
+  levelが2級工業簿記、chapterが材料費の場合、「直接材料費と間接材料費」「材料の消費単価」「棚卸減耗費」などが当てはまる。
+  - name: レッスンの名前
+  - level_id: どのレベルか示す
+  - chapter_id: どのチャプターか示す 
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/get-started/routing).
+- output  
+  それぞれのlessonに対してのアウトプットを保存するテーブル
+  - post: アウトプットの本文。html形式で保存
+  - user_id: 投稿したユーザーを示す
+  - lesson_id: どのレッスンに対してのアウトプットかを示す
+  - be_finished: デフォルトはfalse。合格したら管理者がtrueにする
 
-### `plugins`
-
-The plugins directory contains JavaScript plugins that you want to run before instantiating the root Vue.js Application. This is the place to add Vue plugins and to inject functions or constants. Every time you need to use `Vue.use()`, you should create a file in `plugins/` and add its path to plugins in `nuxt.config.js`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/plugins).
-
-### `static`
-
-This directory contains your static files. Each file inside this directory is mapped to `/`.
-
-Example: `/static/robots.txt` is mapped as `/robots.txt`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/static).
-
-### `store`
-
-This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
+- comment  
+  アウトプットに対してのコメントを保存するテーブル  
+  - body: コメントの内容
+  - user_id: コメントを投稿したユーザーを示す
+  - output_id: どのoutputか

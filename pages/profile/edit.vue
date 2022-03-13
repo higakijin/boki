@@ -22,7 +22,6 @@
             </label>
           </div>
           <input v-model="name" type="text" class="block border border-grey-light w-full p-3 rounded mb-4" name="name" placeholder="Name" />
-          <!-- <input v-model="email" type="text" class="block border border-grey-light w-full p-3 rounded mb-4" name="email" placeholder="Email" /> -->
           <div class="flex gap-x-5">
             <NuxtLink to="/profile" class="w-1/2 text-center py-3 rounded border border-indigo-500 text-indigo-500 my-1 hover:bg-gray-100">キャンセル</NuxtLink>
             <button type="submit" class="w-1/2 text-center py-3 rounded bg-indigo-500 text-white hover:bg-indigo-600 focus:outline-none my-1">更新</button>
