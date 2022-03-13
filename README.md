@@ -1,68 +1,39 @@
-# boki
+# アプリ概要
+## アプリのURL
+https://www.bokunoboki.com/
 
-## Build Setup
+##  僕のボキとは
+私は現在簿記を勉強しています。  
+基本的にはテキストを読んで問題演習をするといったことの繰り返しなのですが、「だれかに学習のサポートをしてほしいな」と感じることがありました。  
+そんな経験から取得した後は、簿記学習のサポートをココナラのようなスキル販売サイトで行いたいと考え、今回その時に使うアプリを想定して開発しました。
 
-```bash
-# install dependencies
-$ npm install
+## 基本的な使い方
+参考書の各チャプターを読んでもらい、学んだことをこのアプリにアウトプットしてもらいます。  
+参考書には[パブロフ流でみんな合格 日商簿記](https://www.amazon.co.jp/%E7%B0%BF%E8%A8%98%E6%95%99%E7%A7%91%E6%9B%B8-%E3%83%91%E3%83%96%E3%83%AD%E3%83%95%E6%B5%81%E3%81%A7%E3%81%BF%E3%82%93%E3%81%AA%E5%90%88%E6%A0%BC-%E6%97%A5%E5%95%86%E7%B0%BF%E8%A8%982%E7%B4%9A-%E5%95%86%E6%A5%AD%E7%B0%BF%E8%A8%98-2021%E5%B9%B4%E5%BA%A6%E7%89%88/dp/4798168475/?_encoding=UTF8&pd_rd_w=VPQT4&pf_rd_p=0bb824f3-323d-45b0-8a2a-126f1b7fc966&pf_rd_r=1JW3NRQYQV8EH42F11XV&pd_rd_r=4af0a16b-2d83-4cd8-9bc5-de497d3b003b&pd_rd_wg=rhmD9&ref_=pd_gw_ci_mcx_mr_hp_atf_m)
+シリーズ（よせだあつこさん著）を使用します。（理由は自分が使用していたため）  
+ 
+それぞれのアウトプットに対してコメントを通してディスカッションすることができ、その都度修正してもらい、管理者（私）が問題ないと判断したら合格点をもらえます。  
 
-# serve with hot reload at localhost:3000
-$ npm run dev
+（3級は教材が私の手元にないため、現在は2級工業簿記・商業簿記のみ対応としています。）
 
-# build for production and launch server
-$ npm run build
-$ npm run start
+## プランについて
+予定では
+- ベーシック: 1週間のお試しコース
+- プラス: 1ヶ月980円コース
+- プロ:　合格するまでの永久対応の14,980円コース
 
-# generate static project
-$ npm run generate
-```
+を考えています。
 
-For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
+当初はアプリ自体にStripeやPay.jpなどの外部決済サービスの導入を考えていましたが、（ココナラのような）スキル販売サイト上で取引できること、顧客情報流出のリスクがあることを考慮し、導入しませんでした。
 
-## Special Directories
+# 技術面
+## 言語など
+- フロントエンド: Nuxt.js(Vue.js) 2.15.8
+- バックエンド: Ruby on Rails 6.1.4.6 APIモード
+  (バックエンドのリポジトリは https://github.com/higakijin/boki-backend です)
+- デプロイ先: Heroku
+- 画像ストレージはAmazon S3を使用
+- 独自ドメインは お名前.com にて取得
 
-You can create the following extra directories, some of which have special behaviors. Only `pages` is required; you can delete them if you don't want to use their functionality.
-
-### `assets`
-
-The assets directory contains your uncompiled assets such as Stylus or Sass files, images, or fonts.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/assets).
-
-### `components`
-
-The components directory contains your Vue.js components. Components make up the different parts of your page and can be reused and imported into your pages, layouts and even other components.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/components).
-
-### `layouts`
-
-Layouts are a great help when you want to change the look and feel of your Nuxt app, whether you want to include a sidebar or have distinct layouts for mobile and desktop.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/layouts).
-
-### `pages`
-
-This directory contains your application views and routes. Nuxt will read all the `*.vue` files inside this directory and setup Vue Router automatically.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/get-started/routing).
-
-### `plugins`
-
-The plugins directory contains JavaScript plugins that you want to run before instantiating the root Vue.js Application. This is the place to add Vue plugins and to inject functions or constants. Every time you need to use `Vue.use()`, you should create a file in `plugins/` and add its path to plugins in `nuxt.config.js`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/plugins).
-
-### `static`
-
-This directory contains your static files. Each file inside this directory is mapped to `/`.
-
-Example: `/static/robots.txt` is mapped as `/robots.txt`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/static).
-
-### `store`
-
-This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
+## ER図
+![画像](https://gyazo.com/30ca8ddf1107143959c09c2ecfb8051f)
