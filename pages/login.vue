@@ -23,9 +23,9 @@
               <input v-model="password" type="password" name="" id="" placeholder="Enter Password" minlength="6" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" required />
             </div>
 
-            <div class="text-right mt-2">
+            <!-- <div class="text-right mt-2">
               <a href="#" class="text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700">Forgot Password?</a>
-            </div>
+            </div> -->
 
             <ul v-show="errors[0]" class="mt-4 pl-5">
               <li v-for="error in errors" :key="error.id" class="text-sm text-red-500 list-disc">{{ error }}</li>
