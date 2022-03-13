@@ -29,7 +29,7 @@ https://www.bokunoboki.com/
 # 技術面
 ## 言語など
 - フロントエンド: Nuxt.js(Vue.js) 2.15.8
-- バックエンド: Ruby on Rails 6.1.4.6 APIモード
+- バックエンド: Ruby on Rails 6.1.4.6 APIモード  
   (バックエンドのリポジトリは https://github.com/higakijin/boki-backend です)
 - デプロイ先: Heroku
 - 画像ストレージはAmazon S3を使用
@@ -37,3 +37,42 @@ https://www.bokunoboki.com/
 
 ## ER図
 [![Image from Gyazo](https://i.gyazo.com/30ca8ddf1107143959c09c2ecfb8051f.png)](https://gyazo.com/30ca8ddf1107143959c09c2ecfb8051f)
+
+### 各テーブル、カラムについて
+- user  
+  ユーザー情報についてのテーブル。  
+  devise-token-authという認証系のGemで追加
+  - name: 名前
+  - email: メールアドレス
+  - password, password_confirmation:　パスワード
+  - is_admin: 管理者かどうかの情報。デフォルトはfalse
+  - level_id: ユーザーがどのレベルの内容に取り組んでいるのかをわかるようにする外部キー
+  - plan: 契約しているプランを示す。basic, plus, proのどれか。
+
+- level  
+学習コンテンツのレベルを示したテーブル。  
+具体的には、3級簿記、2級工業簿記、2級商業簿記のどれか。
+  - name: コンテンツの名前
+
+- chapter  
+levelの中の、チャプターについてのテーブル  
+levelが2級工業簿記の場合は、「材料費」「労務費」「経費」などが当てはまる。
+  - name: チャプターの名前
+  - level_id: どのレベルのチャプターなのかを示す外部キー
+
+- lesson  
+  chapterの中の、レッスンについてのテーブル  
+  levelが2級工業簿記、chapterが材料費の場合、「直接材料費と間接材料費」「材料の消費単価」「棚卸減耗費」などが当てはまる。
+
+- output  
+  それぞれのlessonに対してのアウトプットを保存するテーブル
+  - post: アウトプットの本文。html形式で保存
+  - user_id: 投稿したユーザーを示す
+  - lesson_id: どのレッスンに対してのアウトプットかを示す
+  - be_finished: デフォルトはfalse。合格したら管理者がtrueにする
+
+- comment  
+  アウトプットに対してのコメントを保存するテーブル  
+  - body: コメントの内容
+  - user_id: コメントを投稿したユーザーを示す
+  - output_id: 
