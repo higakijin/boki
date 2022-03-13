@@ -2,6 +2,29 @@
 ## アプリのURL
 https://www.bokunoboki.com/
 
+## 画像
+-  トップページ
+[![Image from Gyazo](https://i.gyazo.com/c70d37fe811a964321514115b5969dcc.png)](https://gyazo.com/c70d37fe811a964321514115b5969dcc)
+
+- ログイン
+[![Image from Gyazo](https://i.gyazo.com/1e8b5d74243aea2602707a558f0380d7.png)](https://gyazo.com/1e8b5d74243aea2602707a558f0380d7)
+
+- ダッシュボード
+[![Image from Gyazo](https://i.gyazo.com/d849e76d3675554ae720d6c404928808.png)](https://gyazo.com/d849e76d3675554ae720d6c404928808)
+
+- チャプターの一覧
+[![Image from Gyazo](https://i.gyazo.com/f76da80d6ee5b9b639fa0d9ce69b5b1a.png)](https://gyazo.com/f76da80d6ee5b9b639fa0d9ce69b5b1a)
+
+- アウトプットの画面
+[![Image from Gyazo](https://i.gyazo.com/80dcc0290b84b6ef307285fb6e860c5b.png)](https://gyazo.com/80dcc0290b84b6ef307285fb6e860c5b)
+
+- 他人のアウトプットのコメント
+[![Image from Gyazo](https://i.gyazo.com/f3cb16f26874a21002445adc4d784c7d.png)](https://gyazo.com/f3cb16f26874a21002445adc4d784c7d)
+
+- 管理者画面
+[![Image from Gyazo](https://i.gyazo.com/79837716c8b1269c3dd28537042680ca.png)](https://gyazo.com/79837716c8b1269c3dd28537042680ca)
+[![Image from Gyazo](https://i.gyazo.com/7fe66253f0c8b93d645022c7d2f75d2e.png)](https://gyazo.com/7fe66253f0c8b93d645022c7d2f75d2e)
+
 ##  僕のボキとは
 私は現在簿記を勉強しています。  
 基本的にはテキストを読んで問題演習をするといったことの繰り返しなのですが、「だれかに学習のサポートをしてほしいな」と感じることがありました。  
