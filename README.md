@@ -36,4 +36,4 @@ https://www.bokunoboki.com/
 - 独自ドメインは お名前.com にて取得
 
 ## ER図
-![画像](https://gyazo.com/30ca8ddf1107143959c09c2ecfb8051f)
+[![Image from Gyazo](https://i.gyazo.com/30ca8ddf1107143959c09c2ecfb8051f.png)](https://gyazo.com/30ca8ddf1107143959c09c2ecfb8051f)
