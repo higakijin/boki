@@ -53,7 +53,6 @@ https://www.bokunoboki.com/
 ## 言語など
 - フロントエンド: Nuxt.js(Vue.js) 2.15.8
 - バックエンド: Ruby on Rails 6.1.4.6 APIモード  
-  (バックエンドのリポジトリは https://github.com/higakijin/boki-backend です)
 - デプロイ先: Heroku
 - 画像ストレージはAmazon S3を使用
 - 独自ドメインは お名前.com にて取得
